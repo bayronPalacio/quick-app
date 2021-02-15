@@ -40,7 +40,7 @@ const Registration = () => {
                                 <label for="validationCustom01">First name</label>
                                 <input type="text" value={name} onChange={(event) => setName(event.target.value)} className="form-control" id="validationCustom01" placeholder="Mark" required />
                             </div>
-                            <div classNameName="col-md-6 mb-3">
+                            <div className="col-md-6 mb-3">
                                 <label for="validationCustom02">Last name</label>
                                 <input type="text" value={last} onChange={(event) => setLast(event.target.value)} className="form-control" id="validationCustom02" placeholder="Otto" required />
                             </div>
