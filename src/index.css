@@ -11,3 +11,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #1F1F1F;
+}
+
+#carouseArea{
+  width: 60%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.navbar-custom { 
+  background-color: #1f1f1f;
+} 
+
+.navbar-custom .navbar-brand, 
+.navbar-text { 
+  color: white;
+} 
+
+.nav-link {
+  color:#303841;
+}
+
+.d-flex, .list-group-item{
+  background-color: #1F1F1F;
+  color:#EEEEEE;
+}
+
+.mainBack {
+  background-color: white;
+}
+
+.mainBackAlert {
+  background-color: #DFF1F9;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.mainBackModalSignIn {
+  width: 100%;
+  max-width: 630px;
+  padding: 15px;
+  margin: auto;
+  background-color: #1F1F1F;
+}
+
+.mainBackModalSignUp {
+  width: 100%;
+  max-width: 700px;
+  padding: 15px;
+  margin: auto;
+  background-color: #1F1F1F;
+}
+
+
+.h1-title{
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  color: #f8f8f8;
+}
+
+.button-color{
+  background-color: #FF6E40;
+  color:white;
+}
+
+.p-text {
+    color : white;
+}
+
+.p-title {
+    color : #03A9F5;
+}
+
+.dropdown-item:hover {
+  color:#FF6E40;
+  background-color: #1F1F1F;
+}
+
+.primaryModal{
+  background-color: #1F1F1F;
+}
