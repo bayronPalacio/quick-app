@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './pages/Login';
-import Registration from './pages/Registrations';
+import Registration from './pages/Registration';
 import {
   BrowserRouter as Router,
   Route, Switch,
