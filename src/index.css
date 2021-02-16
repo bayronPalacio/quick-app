@@ -98,3 +98,7 @@ body {
 .primaryModal{
   background-color: #1F1F1F;
 }
+
+.flex-fill {
+  text-align: left;
+}
