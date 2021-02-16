@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import CarouselView from '../components/CarouselView';
+import Footer from '../components/Footer';
 
 const Home = () => {
     return (
@@ -8,8 +9,11 @@ const Home = () => {
         <div>
             <NavBar/>
         </div>
-        <div>
+        <div className="mainBack">
             <CarouselView/>
+        </div>
+        <div>
+            <Footer/>
         </div>
         </>
     );
