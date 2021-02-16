@@ -27,7 +27,7 @@ const Registration = () => {
         const response = await result.json();
         console.log(response);
     }
-
+    
     return (
         <>
             <Modal show={true} dialogClassName={"primaryModal"}>
