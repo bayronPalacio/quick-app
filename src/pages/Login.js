@@ -17,7 +17,7 @@ const Login = () => {
     });
     const response = await result.json();
     if (response['responseServer'] === "yes") {
-      history.push("/Registration");
+      history.push("/AddProduct");
       console.log('Successfully Login');
     }
     else {
