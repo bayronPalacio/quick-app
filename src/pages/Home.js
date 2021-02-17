@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <NavBar/>
         </div>
-        <div className="mainBack">
+        <div className="backgroundHome">
             <CarouselView/>
         </div>
         <div>

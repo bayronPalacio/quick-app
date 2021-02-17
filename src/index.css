@@ -38,13 +38,18 @@ body {
   color:#303841;
 }
 
-.d-flex, .list-group-item{
+.d-flex, .list-group-item {
   background-color: #1F1F1F;
   color:#EEEEEE;
 }
 
-.mainBack {
+.backgroundHome {
   background-color: white;
+}
+
+.h1 {
+  background-color: #1F1F1F;
+  color : white;
 }
 
 .mainBackAlert {
@@ -82,7 +87,7 @@ body {
   color:white;
 }
 
-.p-text {
+.p-text, .dropdown-item, .text-center {
     color : white;
 }
 
@@ -101,4 +106,17 @@ body {
 
 .flex-fill {
   text-align: left;
+}
+
+.mx-auto {
+  background-color: #1f1f1f;
+}
+
+.col-md-5 {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.marginBtn {
+  margin-bottom: 2%;
 }
