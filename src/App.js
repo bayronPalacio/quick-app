@@ -8,18 +8,15 @@ import {
   Route, Switch,
 } from 'react-router-dom';
 
-
 function App() {
   return (
     <Router>
-    <div className="App">
-        <div>
-          <Route path="" component={Home} exact/>
-          <Route path="/login" component={Login} />
-          <Route path="/registration" component={Registration}/>
-          <Route path="/addProduct" component={AddProduct}/>
-        </div>
-    </div>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/login' exact component={Login} />
+        <Route path='/registration' exact component={Registration} />
+        <Route path='/addProduct' exact component={AddProduct} />
+      </Switch>
     </Router>
   );
 }
