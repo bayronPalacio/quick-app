@@ -11,7 +11,7 @@ const NavBar = () => {
                     Quick Inventory
                 </span>
                 <form className="d-flex">
-                    <a className="btn button-color btn-block" data-toggle="modal" data-target="#modalSignIn">Sign In</a>
+                    <a className="btn button-color btn-block" href="/Login">Sign In</a>
                 </form>
             </div>
             </nav>
