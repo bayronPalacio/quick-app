@@ -26,43 +26,45 @@ const Login = () => {
     setEmail('');
     setPassword('');
   }
+
+  const ToRegistration = () => {
+    history.push("/Registration");
+  }
   return (
     <>
-      <Modal show={true} dialogClassName={"primaryModal"}>
+      <Modal show={true} dialogClassName={"primaryModal"} className="mx-auto"
+        size="md"
+        centered
+      >
         <Modal.Body>
-
-          <main className="mainBack">
-            <div className="mx-auto" >
-
-              <h1 className="h1-title">Please sign in</h1>
-              <div className="dropdown-menu-right">
-                <form className="px-4 py-3">
-                  <div className="form-group">
-                    {/* <!-- <label for="exampleDropdownFormEmail1">Email address</label> --> */}
-                    <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} className="form-control" id="exampleDropdownFormEmail1" placeholder="email@service.com" />
+          <div className="mx-auto">
+            <h1 className="h1-title">Please sign in</h1>
+            <div className="dropdown-menu-right">
+              <form className="px-4 py-3">
+                <div className="form-group">
+                  {/* <!-- <label for="exampleDropdownFormEmail1">Email address</label> --> */}
+                  <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} className="form-control" id="exampleDropdownFormEmail1" placeholder="email@service.com" />
+                </div>
+                <div className="form-group">
+                  {/* <!-- <label for="exampleDropdownFormPassword1">Password</label> --> */}
+                  <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="form-control" id="exampleDropdownFormPassword1" placeholder="Password" />
+                </div>
+                <div className="form-group h1-title">
+                  <div className="form-check">
+                    <input type="checkbox" className="form-check-input" id="dropdownCheck" />
+                    <label className="form-check-label" for="dropdownCheck">
+                      Remember me
+                      </label>
                   </div>
-                  <div className="form-group">
-                    {/* <!-- <label for="exampleDropdownFormPassword1">Password</label> --> */}
-                    <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="form-control" id="exampleDropdownFormPassword1" placeholder="Password" />
-                  </div>
-                  <div className="form-group h1-title">
-                    <div className="form-check">
-                      <input type="checkbox" className="form-check-input" id="dropdownCheck" />
-                      <label className="form-check-label" for="dropdownCheck">
-                        Remember me
-              </label>
-                    </div>
-                  </div>
-                  <button type="submit" onClick={() => ValidateUser()} className="btn button-color btn-block">Sign in</button>
-                  <p className="text-center font-italic font-weight-light">By clicking Sign In, you agree to our Terms.</p>
-                  <div className="dropdown-divider">
-                    <a className="dropdown-item text-center font-italic btn-success" href="./signUp">No Acount? Sign up</a>
-                    <a className="dropdown-item text-center font-italic btn-success" href="#">Forgot password?</a>
-                  </div>
-                </form>
-              </div>
+                </div>
+                <button type="submit" onClick={() => ValidateUser()} className="btn button-color btn-block">Sign in</button>
+                <p className="text-center font-italic font-weight-light">By clicking Sign In, you agree to our Terms.</p>
+                <div class="dropdown-divider"></div>
+                <a className="dropdown-item text-center font-italic" href="./Registration">No Acount? Sign up</a>
+                <a className="dropdown-item text-center font-italic" href="#">Forgot password?</a>
+              </form>
             </div>
-          </main>
+          </div>
         </Modal.Body>
       </Modal>
     </>

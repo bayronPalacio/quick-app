@@ -1,10 +1,7 @@
 import React from 'react';
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 const AddProduct = () => {
-    return (
-
-        
+    return (       
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mainBack">
             <div class="table-responsive sizeDiv" id="firstSection">
                 <p class="text-justify">
