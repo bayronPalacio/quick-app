@@ -7,7 +7,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const history = useHistory();
 
-  const ValidateUser = async () => {
+  const ValidateUser = async (e) => {
+    e.preventDefault();
     const result = await fetch(`/login`, {
       method: 'post',
       body: JSON.stringify({ email, password: email, password }),
@@ -58,7 +59,7 @@ const Login = () => {
                       </label>
                   </div>
                 </div>
-                <button type="submit" onClick={() => ValidateUser()} className="btn button-color btn-block">Sign in</button>
+                <button type="submit" onClick={ValidateUser} className="btn button-color btn-block">Sign in</button>
                 <p className="text-center font-italic font-weight-light">By clicking Sign In, you agree to our Terms.</p>
                 <div className="dropdown-divider"></div>
                 <a className="dropdown-item text-center font-italic" href="./Registration">No Acount? Sign up</a>

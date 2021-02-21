@@ -16,7 +16,8 @@ body {
   width: 100%;
   margin-left:auto;
   margin-right:auto;
-  background-color: #1F1F1F;
+  background-color: #CCCCCC;
+  overflow: hidden;
 }
 
 #carouseArea{
@@ -126,5 +127,6 @@ body {
 }
 
 .rightSection{
-  margin-left: 50px;
+  margin-left: 40vh;
+  overflow: hidden;
 }
