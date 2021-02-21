@@ -9,11 +9,14 @@ const mql = window.matchMedia(`(min-width: 800px)`);
 const AddProduct = () => {
     return (
         <>
-            <Container>
-                <Col>
-                    <Sidebar />
-                </Col>
-                <Col>
+            <Container style={{width:100 + '%'}}>
+            {/* <Row> */}
+                
+    {/* <Col sm={2} className="button-color"><Sidebar /></Col> */}
+    {/* <Col sm={10} className="backgroundHome"> */}
+
+
+             <div className="rightSection">
                     <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4 mainBack">
                         <div className="table-responsive sizeDiv" id="firstSection">
                             <p className="text-justify">
@@ -72,7 +75,9 @@ const AddProduct = () => {
                             </div>
                         </div>
                     </main>
-                </Col>
+                    </div>
+                    {/* </Col>
+  </Row> */}
             </Container>
         </>
     );

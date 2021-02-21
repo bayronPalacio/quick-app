@@ -120,3 +120,11 @@ body {
 .marginBtn {
   margin-bottom: 2%;
 }
+
+.test{
+  width: 100%;
+}
+
+.rightSection{
+  margin-left: 50px;
+}

@@ -6,48 +6,33 @@ import * as RiIcons from 'react-icons/ri';
 
 export const SidebarData = [
   {
-    title: 'Overview',
-    path: '/overview',
-    icon: <AiIcons.AiFillHome />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Users',
-        path: '/overview/users',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Revenue',
-        path: '/overview/revenue',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
+    title: 'Dashboard',
+    path: '/dashboard',
+    icon: <AiIcons.AiFillTablet />,
   },
   {
-    title: 'Reports',
-    path: '/reports',
+    title: 'Product',
+    path: '/products',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Reports',
-        path: '/reports/reports1',
+        title: 'Add',
+        path: '/addProduct',
+        icon: <IoIcons.IoIosAdd />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Export',
+        path: '/exportProducts',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
       {
-        title: 'Reports 2',
-        path: '/reports/reports2',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'sub-nav'
-      },
-      {
-        title: 'Reports 3',
-        path: '/reports/reports3',
+        title: 'Import',
+        path: '/importProducts',
         icon: <IoIcons.IoIosPaper />
       }
     ]
