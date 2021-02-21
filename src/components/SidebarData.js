@@ -11,9 +11,9 @@ export const SidebarData = [
     icon: <AiIcons.AiFillTablet />,
   },
   {
-    title: 'Product',
-    path: '/products',
-    icon: <IoIcons.IoIosPaper />,
+    title: 'Inventory',
+    path: '/inventory',
+    icon: <FaIcons.FaBoxes />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -21,56 +21,40 @@ export const SidebarData = [
       {
         title: 'Add',
         path: '/addProduct',
-        icon: <IoIcons.IoIosAdd />,
+        icon: <FaIcons.FaPlus />,
         cName: 'sub-nav'
       },
       {
         title: 'Export',
         path: '/exportProducts',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <FaIcons.FaFileExport />,
         cName: 'sub-nav'
       },
       {
         title: 'Import',
         path: '/importProducts',
-        icon: <IoIcons.IoIosPaper />
+        icon: <FaIcons.FaFileImport />
       }
     ]
   },
   {
-    title: 'Products',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />
+    title: 'Orders',
+    path: '/orders',
+    icon: <FaIcons.FaPrint />
   },
   {
-    title: 'Team',
-    path: '/team',
-    icon: <IoIcons.IoMdPeople />
+    title: 'Invoices',
+    path: '/invoices',
+    icon: <FaIcons.FaFolder />
   },
   {
-    title: 'Messages',
+    title: 'Set Alarms',
     path: '/messages',
-    icon: <FaIcons.FaEnvelopeOpenText />,
-
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Message 1',
-        path: '/messages/message1',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Message 2',
-        path: '/messages/message2',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
+    icon: <FaIcons.FaBell />,
   },
   {
-    title: 'Support',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
+    title: 'Suppliers',
+    path: '/suppliers',
+    icon: <FaIcons.FaIndustry />
   }
 ];

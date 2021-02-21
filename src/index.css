@@ -16,7 +16,7 @@ body {
   width: 100%;
   margin-left:auto;
   margin-right:auto;
-  background-color: #1F1F1F;
+  background-color: #CCCCCC;
 }
 
 #carouseArea{
@@ -125,6 +125,6 @@ body {
   width: 100%;
 }
 
-.rightSection{
-  margin-left: 50px;
-}
+/* .rightSection{
+  margin-left: 30px;
+} */

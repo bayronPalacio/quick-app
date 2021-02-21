@@ -9,7 +9,6 @@ import {
   Route, Switch,
 } from 'react-router-dom';
 import ImportProducts from './pages/ImportProducts';
-import Products from './pages/Products';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 
