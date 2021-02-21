@@ -16,8 +16,9 @@ const Login = () => {
       }
     });
     const response = await result.json();
+    console.log(response);
     if (response['responseServer'] === "yes") {
-      history.push("/AddProduct");
+      history.push("/dashboard");
       console.log('Successfully Login');
     }
     else {
@@ -52,14 +53,14 @@ const Login = () => {
                 <div className="form-group h1-title">
                   <div className="form-check">
                     <input type="checkbox" className="form-check-input" id="dropdownCheck" />
-                    <label className="form-check-label" for="dropdownCheck">
+                    <label className="form-check-label" htmlFor="dropdownCheck">
                       Remember me
                       </label>
                   </div>
                 </div>
                 <button type="submit" onClick={() => ValidateUser()} className="btn button-color btn-block">Sign in</button>
                 <p className="text-center font-italic font-weight-light">By clicking Sign In, you agree to our Terms.</p>
-                <div class="dropdown-divider"></div>
+                <div className="dropdown-divider"></div>
                 <a className="dropdown-item text-center font-italic" href="./Registration">No Acount? Sign up</a>
                 <a className="dropdown-item text-center font-italic" href="#">Forgot password?</a>
               </form>
