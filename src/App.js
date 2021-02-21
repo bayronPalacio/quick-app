@@ -15,13 +15,13 @@ import Dashboard from './pages/Dashboard';
 function App() {
   return (
     <Router>
-    <Switch>        
+      <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/login' exact component={Login} />
         <Route path='/registration' exact component={Registration} />
         <Route path='/dashboard' exact component={Dashboard} />
-    </Switch>
-</Router>
+      </Switch>
+    </Router>
   );
 }
 
