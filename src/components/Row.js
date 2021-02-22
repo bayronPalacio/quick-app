@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Row = () => {
+const Row = ({product, listProducts, setListProducts}) => {
     return (
         <tr>
-            <td>1</td>
-            {Array.from({ length: 5 }).map((_, index) => (
-                <td key={index}>Table cell {index}</td>
-            ))}
+            <td>{product.data.barcode}</td>
+            <td>{product.data.name}</td>
+            <td>{product.data.quantity}</td>
+            <td>{product.data.minStock}</td>
+            <td>{product.data.price}</td>
         </tr>
     );
 }
