@@ -12,29 +12,24 @@ export const SidebarData = [
   },
   {
     title: 'Inventory',
-    path: '/inventory',
+    // path: '/inventory',
     icon: <FaIcons.FaBoxes />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
+        title: 'List Products',
+        path: '/inventory',
+        icon: <FaIcons.FaBoxOpen />,
+        cName: 'sub-nav'
+      },
+      {
         title: 'Add',
         path: '/addProduct',
         icon: <FaIcons.FaPlus />,
         cName: 'sub-nav'
       },
-      {
-        title: 'Export',
-        path: '/exportProducts',
-        icon: <FaIcons.FaFileExport />,
-        cName: 'sub-nav'
-      },
-      {
-        title: 'Import',
-        path: '/importProducts',
-        icon: <FaIcons.FaFileImport />
-      }
     ]
   },
   {
