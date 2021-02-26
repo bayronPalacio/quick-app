@@ -2,46 +2,68 @@ import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table'
 import Row from '../components/Row';
 import axios from 'axios';
+import * as FaIcons from 'react-icons/fa';
+import { CSVLink } from "react-csv";
+import { format } from 'date-fns';
+
+const headers = [
+    { label: "Barcode", key: "barcode" },
+    { label: "Name", key: "name" },
+    { label: "Quantity", key: "quantity" },
+    { label: "Price", key: "price" },
+    { label: "Weight", key: "weight" },
+    { label: "Min Stock", key: "minStock" },
+    { label: "Description", key: "description" }
+];
 
 const Inventory = () => {
     const [listProducts, setListProducts] = useState([]);
-
+    const [data, setData] = useState([]);
 
     useEffect(async () => {
-        // const response = await result.json();
-        // setListProducts(response);
-        // console.log(listProducts);
-        axios.get('/products')
-            .then(function (response) {
-                console.log(response.data);
-                setListProducts(response.data);
+        const arrayProd = [];
+        try {
+            const response = await axios.get('/products');
+            setListProducts(response.data);
+            response.data.map(item => {
+                arrayProd.push(item.data);
             })
-            .catch(function (error) {
-                console.log(error);
-            })
-
+            setData(arrayProd);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }, []);
 
-    console.log(listProducts);
+
 
     return (
         <div className="rightSection">
-            {/* <h1>Inventory</h1> */}
-            <Table responsive variant="dark">
+            <h1>All Products</h1>
+            <h5><a><FaIcons.FaFileUpload /></a> IMPORT &nbsp;&nbsp; <FaIcons.FaFileDownload />
+                {/* <input type="button" value="EXPORT" /> */}
+                <CSVLink
+                    data={data}
+                    headers={headers}
+                    filename={'Inventory' + format(new Date(), 'MM-dd-yyyy HH:MM:SS') + '.csv'}
+                >EXPORT</CSVLink>
+            </h5>
+            <Table responsive="sm" style={{ backgroundColor: '#1f1f1f' }} className="p-text">
                 <thead>
                     <tr>
                         <th>Barcode</th>
                         <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Min Stock</th>
-                        <th>Price</th>
+                        <th className="center-text">Quantity</th>
+                        <th className="center-text ">Min Stock</th>
+                        <th className="center-text">Price</th>
+                        <th colSpan="2" className="center-text">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {listProducts.map((product) => (
-                        <Row 
-                            key={product._id} 
-                            product={product} 
+                        <Row
+                            key={product._id}
+                            product={product}
                             listProducts={listProducts}
                             setListProducts={setListProducts} />
                     ))}
