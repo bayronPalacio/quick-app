@@ -9,6 +9,7 @@ import {
   Route, Switch,
 } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import Inventory from './pages/Inventory';
 
 function App() {
   return (
