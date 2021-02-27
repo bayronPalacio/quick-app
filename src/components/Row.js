@@ -18,6 +18,28 @@ const Row = ({ product, listProducts, setListProducts }) => {
                 console.log(error);
             })
     }
+
+    const updateProduct = () => {
+        axios.put('/updateProduct/', { payload: product })
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    const toggleAlarm = () => {
+        setListProducts(listProducts.map((item) => {
+            if (item.data.barcode === product.data.barcode) {
+                item.data.alarm = !item.data.alarm
+                return item;
+            }
+            return item;
+        }))
+        updateProduct()
+    }
+
     const editHandler = () => {
         setOpenModal(true);
     }
@@ -29,11 +51,12 @@ const Row = ({ product, listProducts, setListProducts }) => {
     const handleSubmit = async (e) => {
         const dataForm = new FormData(e.target);
         const data = Object.fromEntries(dataForm.entries());
-
+        data['alarm'] = product.data.alarm;
         product.data = data;
 
+        console.log(data.quantity + " " + data.minStock)
         //alarm if quantity match min stock
-        if (product.data.quantity <= product.data.minStock) {
+        if (data.quantity*1 <= data.minStock*1 && data.alarm){
             axios.post('/emailOOS/', { payload: product })
                 .then(function (response) {
                     console.log(response);
@@ -50,6 +73,7 @@ const Row = ({ product, listProducts, setListProducts }) => {
             .catch(function (error) {
                 console.log(error);
             })
+        updateProduct()
     }
 
     return (
@@ -62,12 +86,15 @@ const Row = ({ product, listProducts, setListProducts }) => {
                 <td className="center-text">${product.data.price}</td>
                 <td className="center-text"><button className="button-icon" onClick={editHandler}><i><FaIcons.FaEdit /></i></button></td>
                 <td className="center-text"><button className="button-icon" onClick={deleteHandler}><i><FaIcons.FaTrashAlt /></i></button></td>
+                <td className="center-text" style={{ backgroundColor: product.data.alarm ? 'red' : undefined }}><button className="button-icon" onClick={toggleAlarm}><i><FaIcons.FaBell /></i></button></td>
             </tr>
-            <Modal show={openModal} onHide={closeHandler}
+            <Modal show={openModal} onHide={closeHandler} dialogClassName={"primaryModal"} 
                 size="lg"
             >
                 <Modal.Body>
+                <div className="h1-title mainBackModalSignUp">
                     <FormProduct handleSubmit={handleSubmit} data={product.data} />
+                 </div>
                 </Modal.Body>
             </Modal>
         </>

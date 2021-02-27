@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/inventory' exact component={Inventory} />
+        <Route path='/' exact component={Home} />
         <Route path='/login' exact component={Login} />
         <Route path='/registration' exact component={Registration} />
         <Route path='/dashboard' exact component={Dashboard} />

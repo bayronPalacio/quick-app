@@ -8,7 +8,7 @@ const FormProduct = ({handleSubmit, data}) => {
     <Form onSubmit={handleSubmit}>
         <Form.Row>
             <Form.Group as={Col}>
-                <Form.Label>Barcode</Form.Label>
+                <Form.Label >Barcode</Form.Label>
                 <Form.Control type="text" name="barcode" value={data.barcode}/>
             </Form.Group>
             <Form.Group as={Col}>
@@ -43,7 +43,7 @@ const FormProduct = ({handleSubmit, data}) => {
         <Button variant="primary" type="submit" className="btn button-color marginBtn">
             Submit
     </Button>
-    </Form>
+        </Form>
     );
 }
 

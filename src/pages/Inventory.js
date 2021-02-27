@@ -44,7 +44,7 @@ const Inventory = () => {
         <div className="rightSection">
             <h1>All Products</h1>
             <h5><a><FaIcons.FaFileUpload /></a> IMPORT &nbsp;&nbsp; <FaIcons.FaFileDownload />
-            <input type="file" name="file" />
+            {/* <input type="file" name="file" /> */}
                 {/* <input type="button" value="EXPORT" /> */}
                 <CSVLink
                     data={data}
@@ -61,6 +61,7 @@ const Inventory = () => {
                         <th className="center-text ">Min Stock</th>
                         <th className="center-text">Price</th>
                         <th colSpan="2" className="center-text">Action</th>
+                        <th colSpan="2" className="center-text">Alarms</th>
                     </tr>
                 </thead>
                 <tbody>

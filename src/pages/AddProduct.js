@@ -1,5 +1,7 @@
 import React from 'react';
 import FormProduct from '../components/FormProduct';
+import SweetAlert from 'react-bootstrap-sweetalert';
+import {Alert} from 'reactstrap';
 
 const AddProduct = () => {
     const initialData = {};
@@ -8,7 +10,7 @@ const AddProduct = () => {
         e.preventDefault();
         const dataForm = new FormData(e.target);
         const data = Object.fromEntries(dataForm.entries());
-        console.log(JSON.stringify(data));
+        data['alarm'] = false
 
         const toDb = await fetch('/addProduct', {
             method: 'post',
@@ -19,14 +21,26 @@ const AddProduct = () => {
         });
 
         const response = await toDb.json();
-        console.log(response);
+
+        return(
+            <div>
+                <Alert color="primary">
+                    ngngh
+                </Alert>
+            </div>
+            // <SweetAlert
+            //     success
+            //     title="Your product has been added."
+            //     onConfirm={() => this.hideAlert()}
+            //     ></SweetAlert>
+        )
     }
 
     return (
         <div className="rightSection">
-            <FormProduct handleSubmit={handleSubmit} data={initialData}/>
-        </div> 
+            <FormProduct handleSubmit={handleSubmit} data={initialData} />
+        </div>
     );
-} 
+}
 
 export default AddProduct
