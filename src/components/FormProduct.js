@@ -31,7 +31,7 @@ const FormProduct = ({handleSubmit, data}) => {
             </Form.Group>
             <Form.Group as={Col}>
                 <Form.Label>Min. Stock</Form.Label>
-                <Form.Control type="number" name="minStock" vadefaultValue={data.minStock} />
+                <Form.Control type="number" name="minStock" defaultValue={data.minStock} />
             </Form.Group>
         </Form.Row>
         <Form.Row>

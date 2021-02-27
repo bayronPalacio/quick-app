@@ -9,12 +9,13 @@ import {
   Route, Switch,
 } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import Inventory from './pages/Inventory';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' exact component={Home} />
+        <Route path='/inventory' exact component={Inventory} />
         <Route path='/login' exact component={Login} />
         <Route path='/registration' exact component={Registration} />
         <Route path='/dashboard' exact component={Dashboard} />

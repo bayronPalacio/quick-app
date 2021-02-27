@@ -35,12 +35,16 @@ const Inventory = () => {
         }
     }, []);
 
+    const importHandler = () => {
+        var bodyFormData = new FormData();
+    }
 
 
     return (
         <div className="rightSection">
             <h1>All Products</h1>
             <h5><a><FaIcons.FaFileUpload /></a> IMPORT &nbsp;&nbsp; <FaIcons.FaFileDownload />
+            <input type="file" name="file" />
                 {/* <input type="button" value="EXPORT" /> */}
                 <CSVLink
                     data={data}

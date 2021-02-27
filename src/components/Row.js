@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import axios from 'axios';
 import Modal from "react-bootstrap/Modal";
@@ -29,14 +29,27 @@ const Row = ({ product, listProducts, setListProducts }) => {
     const handleSubmit = async (e) => {
         const dataForm = new FormData(e.target);
         const data = Object.fromEntries(dataForm.entries());
+
         product.data = data;
-        axios.put('/updateProduct/', {payload : product})
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+
+        //alarm if quantity match min stock
+        if (product.data.quantity <= product.data.minStock) {
+            axios.post('/emailOOS/', { payload: product })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+
+        axios.put('/updateProduct/', { payload: product })
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     return (
@@ -50,11 +63,11 @@ const Row = ({ product, listProducts, setListProducts }) => {
                 <td className="center-text"><button className="button-icon" onClick={editHandler}><i><FaIcons.FaEdit /></i></button></td>
                 <td className="center-text"><button className="button-icon" onClick={deleteHandler}><i><FaIcons.FaTrashAlt /></i></button></td>
             </tr>
-            <Modal show={openModal} onHide={closeHandler} 
+            <Modal show={openModal} onHide={closeHandler}
                 size="lg"
             >
                 <Modal.Body>
-                    <FormProduct handleSubmit={handleSubmit} data={product.data}/>
+                    <FormProduct handleSubmit={handleSubmit} data={product.data} />
                 </Modal.Body>
             </Modal>
         </>
