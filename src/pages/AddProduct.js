@@ -8,7 +8,7 @@ const AddProduct = () => {
         e.preventDefault();
         const dataForm = new FormData(e.target);
         const data = Object.fromEntries(dataForm.entries());
-        console.log(JSON.stringify(data));
+        data['alarm'] = false
 
         const toDb = await fetch('/addProduct', {
             method: 'post',
@@ -19,14 +19,13 @@ const AddProduct = () => {
         });
 
         const response = await toDb.json();
-        console.log(response);
     }
 
     return (
         <div className="rightSection">
-            <FormProduct handleSubmit={handleSubmit} data={initialData}/>
-        </div> 
+            <FormProduct handleSubmit={handleSubmit} data={initialData} />
+        </div>
     );
-} 
+}
 
 export default AddProduct
