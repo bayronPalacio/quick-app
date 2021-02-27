@@ -57,6 +57,7 @@ const Inventory = () => {
                         <th className="center-text ">Min Stock</th>
                         <th className="center-text">Price</th>
                         <th colSpan="2" className="center-text">Action</th>
+                        <th colSpan="2" className="center-text">Alarms</th>
                     </tr>
                 </thead>
                 <tbody>

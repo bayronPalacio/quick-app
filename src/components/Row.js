@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import axios from 'axios';
 import Modal from "react-bootstrap/Modal";
@@ -18,6 +18,28 @@ const Row = ({ product, listProducts, setListProducts }) => {
                 console.log(error);
             })
     }
+
+    const updateProduct = () => {
+        axios.put('/updateProduct/', { payload: product })
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    const toggleAlarm = () => {
+        setListProducts(listProducts.map((item) => {
+            if (item.data.barcode === product.data.barcode) {
+                item.data.alarm = !item.data.alarm
+                return item;
+            }
+            return item;
+        }))
+        updateProduct()
+    }
+
     const editHandler = () => {
         setOpenModal(true);
     }
@@ -30,13 +52,7 @@ const Row = ({ product, listProducts, setListProducts }) => {
         const dataForm = new FormData(e.target);
         const data = Object.fromEntries(dataForm.entries());
         product.data = data;
-        axios.put('/updateProduct/', {payload : product})
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+        updateProduct()
     }
 
     return (
@@ -49,12 +65,13 @@ const Row = ({ product, listProducts, setListProducts }) => {
                 <td className="center-text">${product.data.price}</td>
                 <td className="center-text"><button className="button-icon" onClick={editHandler}><i><FaIcons.FaEdit /></i></button></td>
                 <td className="center-text"><button className="button-icon" onClick={deleteHandler}><i><FaIcons.FaTrashAlt /></i></button></td>
+                <td className="center-text" style={{ backgroundColor: product.data.alarm ? 'red' : undefined }}><button className="button-icon" onClick={toggleAlarm}><i><FaIcons.FaBell /></i></button></td>
             </tr>
-            <Modal show={openModal} onHide={closeHandler} 
+            <Modal show={openModal} onHide={closeHandler}
                 size="lg"
             >
                 <Modal.Body>
-                    <FormProduct handleSubmit={handleSubmit} data={product.data}/>
+                    <FormProduct handleSubmit={handleSubmit} data={product.data} />
                 </Modal.Body>
             </Modal>
         </>
