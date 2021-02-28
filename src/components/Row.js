@@ -65,14 +65,6 @@ const Row = ({ product, listProducts, setListProducts }) => {
                     console.log(error);
                 })
         }
-
-        axios.put('/updateProduct/', { payload: product })
-            .then(function (response) {
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
         updateProduct()
     }
 
@@ -88,12 +80,12 @@ const Row = ({ product, listProducts, setListProducts }) => {
                 <td className="center-text"><button className="button-icon" onClick={deleteHandler}><i><FaIcons.FaTrashAlt /></i></button></td>
                 <td className="center-text" style={{ backgroundColor: product.data.alarm ? 'red' : undefined }}><button className="button-icon" onClick={toggleAlarm}><i><FaIcons.FaBell /></i></button></td>
             </tr>
-            <Modal show={openModal} onHide={closeHandler} dialogClassName={"primaryModal"} 
+            <Modal show={openModal} onHide={closeHandler} 
                 size="lg"
             >
                 <Modal.Body>
-                <div className="h1-title mainBackModalSignUp">
-                    <FormProduct handleSubmit={handleSubmit} data={product.data} />
+                <div className="mainBackModalProduct">
+                    <FormProduct handleSubmit={handleSubmit} data={product.data} flag={false}/>
                  </div>
                 </Modal.Body>
             </Modal>

@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
 
-const FormProduct = ({handleSubmit, data}) => {
+const FormProduct = ({handleSubmit, data, flag}) => {
+    const [showMessage, setShowMessage] = useState(false)
+
+
+    const successMessage = () => {
+        if (flag) {
+            setShowMessage(true)
+        }
+    }
+
+    const closeMsg = () => {
+        setShowMessage(false)
+    }
+
     return(
     <Form onSubmit={handleSubmit}>
         <Form.Row>
@@ -40,9 +54,21 @@ const FormProduct = ({handleSubmit, data}) => {
                 <Form.Control as="textarea" row={3} name="description" defaultValue={data.description} />
             </Form.Group>
         </Form.Row>
-        <Button variant="primary" type="submit" className="btn button-color marginBtn">
+        <Button onClick={successMessage} variant="primary" type="submit" className="btn button-color marginBtn">
             Submit
     </Button>
+    <Modal show={showMessage} onHide={closeMsg}
+                size="sm"
+            >
+                <Modal.Body>
+                    <div className="mainBackModalProduct">
+                        <p>Product has been added!</p>
+                        <Button variant="primary" className="btn button-color marginBtn" onClick={closeMsg}>
+                            Ok
+                        </Button>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </Form>
     );
 }
