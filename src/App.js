@@ -10,16 +10,21 @@ import {
 } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Inventory from './pages/Inventory';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/login' exact component={Login} />
-        <Route path='/registration' exact component={Registration} />
-        <Route path='/dashboard' exact component={Dashboard} />
-        <Route path='/addProduct' exact component={AddProduct} />
+        <Route path='/login' component={Login} />
+        <Route path='/registration' component={Registration} />
+        <div>
+        <Sidebar />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/addProduct' component={AddProduct} />
+          <Route path='/inventory' component={Inventory} />          
+        </div>
       </Switch>
     </Router>
   );

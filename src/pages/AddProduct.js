@@ -2,6 +2,7 @@ import React from 'react';
 import FormProduct from '../components/FormProduct';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import {Alert} from 'reactstrap';
+import Sidebar from '../components/Sidebar';
 
 const AddProduct = () => {
     const initialData = {};
@@ -21,25 +22,28 @@ const AddProduct = () => {
         });
 
         const response = await toDb.json();
-
-        return(
-            <div>
-                <Alert color="primary">
-                    ngngh
-                </Alert>
-            </div>
+        e.target.reset();
+        // return(
+        //     <div>
+        //         <Alert color="primary">
+        //             ngngh
+        //         </Alert>
+        //     </div>
             // <SweetAlert
             //     success
             //     title="Your product has been added."
             //     onConfirm={() => this.hideAlert()}
             //     ></SweetAlert>
-        )
+        // )
     }
 
     return (
+        <>
+        
         <div className="rightSection">
-            <FormProduct handleSubmit={handleSubmit} data={initialData} />
+            <FormProduct handleSubmit={handleSubmit} data={initialData} flag={true}/>
         </div>
+        </>
     );
 }
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import * as FaIcons from 'react-icons/fa';
 import { CSVLink } from "react-csv";
 import { format } from 'date-fns';
+import Sidebar from '../components/Sidebar';
 
 const headers = [
     { label: "Barcode", key: "barcode" },
@@ -41,6 +42,7 @@ const Inventory = () => {
 
 
     return (
+        <>
         <div className="rightSection">
             <h1>All Products</h1>
             <h5><a><FaIcons.FaFileUpload /></a> IMPORT &nbsp;&nbsp; <FaIcons.FaFileDownload />
@@ -78,6 +80,7 @@ const Inventory = () => {
 
 
         </div>
+        </>
     );
 }
 
