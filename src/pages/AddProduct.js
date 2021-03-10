@@ -1,8 +1,5 @@
 import React from 'react';
 import FormProduct from '../components/FormProduct';
-import SweetAlert from 'react-bootstrap-sweetalert';
-import {Alert} from 'reactstrap';
-import Sidebar from '../components/Sidebar';
 
 const AddProduct = () => {
     const initialData = {};
@@ -21,7 +18,7 @@ const AddProduct = () => {
             }
         });
 
-        const response = await toDb.json();
+        // const response = await toDb.json();
         e.target.reset();
         // return(
         //     <div>
