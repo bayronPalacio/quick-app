@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import axios from "axios";
+import { format } from "date-fns"; //Library to format date
 
 const OrderProduct = ({ order, listOrders, setListOrders }) => {
   const deleteHandler = () => {
@@ -15,6 +16,24 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
       });
   };
 
+  const generateOrder = async () => {
+    const orderArray = [];
+    const data = Object.fromEntries(orderArray.entries());
+    data["order"] = order.data;
+    data["company"] = {
+      invoiceDate: format(new Date(), "yyyy-MM-dd"),
+      Company: "Quick Inventory",
+    };
+
+    const toDb = await fetch("/addInvoice", {
+      method: "post",
+      body: JSON.stringify({ data }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
   return (
     <>
       <tr>
@@ -27,6 +46,13 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
           <button className="button-icon" onClick={deleteHandler}>
             <i>
               <FaIcons.FaTrashAlt />
+            </i>
+          </button>
+        </td>
+        <td className="center-text">
+          <button className="button-icon" onClick={generateOrder}>
+            <i>
+              <FaIcons.FaTruck />
             </i>
           </button>
         </td>
