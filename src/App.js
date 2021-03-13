@@ -11,6 +11,8 @@ import {
 import Dashboard from './pages/Dashboard';
 import Inventory from './pages/Inventory';
 import Sidebar from './components/Sidebar';
+import Orders from './pages/Orders';
+import AddOrder from './pages/AddOrder';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Sidebar />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/addProduct' component={AddProduct} />
-          <Route path='/inventory' component={Inventory} />          
+          <Route path='/inventory' component={Inventory} />  
+          <Route path='/orders' component={Orders} />        
+          <Route path='/addOrder' component={AddOrder} />
         </div>
       </Switch>
     </Router>

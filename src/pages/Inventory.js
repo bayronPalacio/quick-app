@@ -87,9 +87,6 @@ const Inventory = () => {
                         ))}
                     </tbody>
                 </Table>
-
-
-
             </div>
         </>
     );
