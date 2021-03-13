@@ -6,6 +6,7 @@ const AddProduct = () => {
   const initialData = {};
   const [listProducts, setListProducts] = useState([]);
   const [prodAdded, setProdAdded] = useState([]);
+  const [orderId, setOrderId] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +40,9 @@ const AddProduct = () => {
     try {
       const response = await axios.get("/products");
       setListProducts(response.data);
+      const lastOrderId = await axios.get("/lastOrderId");
+      console.log(lastOrderId.data);
+      setOrderId(lastOrderId.data);
     } catch (error) {
       console.log(error);
     }
@@ -54,6 +58,7 @@ const AddProduct = () => {
           listProducts={listProducts}
           prodAdded={prodAdded}
           setProdAdded={setProdAdded}
+          orderId={orderId}
         />
       </div>
     </>
