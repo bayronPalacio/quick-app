@@ -7,7 +7,6 @@ import Modal from "react-bootstrap/Modal";
 const FormProduct = ({handleSubmit, data, flag}) => {
     const [showMessage, setShowMessage] = useState(false)
 
-
     const successMessage = () => {
         if (flag) {
             setShowMessage(true)

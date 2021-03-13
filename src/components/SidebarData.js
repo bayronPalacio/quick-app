@@ -33,8 +33,25 @@ export const SidebarData = [
   },
   {
     title: 'Orders',
-    path: '/orders',
-    icon: <FaIcons.FaPrint />
+    // path: '/orders',
+    icon: <FaIcons.FaPrint />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'List Orders',
+        path: '/orders',
+        icon: <FaIcons.FaBoxOpen />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Add',
+        path: '/addOrder',
+        icon: <FaIcons.FaPlus />,
+        cName: 'sub-nav'
+      },
+    ]
   },
   {
     title: 'Invoices',
