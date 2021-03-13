@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FormOrder from "../components/FormOrder";
 import axios from "axios";
-import ListOrderProducts from "../components/ListOrderProducts";
 
 const AddProduct = () => {
   const initialData = {};
@@ -56,7 +55,6 @@ const AddProduct = () => {
           prodAdded={prodAdded}
           setProdAdded={setProdAdded}
         />
-        <ListOrderProducts prodAdded={prodAdded} setProdAdded={setProdAdded} />
       </div>
     </>
   );
