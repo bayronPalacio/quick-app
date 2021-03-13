@@ -12,6 +12,7 @@ const FormOrder = ({
   listProducts,
   prodAdded,
   setProdAdded,
+  orderId,
 }) => {
   const [showMessage, setShowMessage] = useState(false);
   const [option, setOption] = useState("");
@@ -49,7 +50,12 @@ const FormOrder = ({
       <Form.Row>
         <Form.Group as={Col}>
           <Form.Label>Order ID</Form.Label>
-          <Form.Control type="text" name="orderId" value={data.orderId} />
+          <Form.Control
+            type="text"
+            name="orderId"
+            defaultValue={orderId}
+            // value={data.orderId}
+          />
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Date</Form.Label>
