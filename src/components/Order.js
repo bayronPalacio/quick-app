@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
+import axios from 'axios';
 
 const OrderProduct = ({ order, listOrders, setListOrders }) => {
 
     const deleteHandler = () => {
         setListOrders(listOrders.filter((el) => el._id !== order._id))
+        axios.delete(`/deleteOrder/${order._id}`)
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     }
 
     return (

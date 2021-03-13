@@ -13,7 +13,10 @@ const AddProduct = () => {
         e.preventDefault();
         const dataForm = new FormData(e.target);
         const data = Object.fromEntries(dataForm.entries());
+        data['status'] = "In Progress";
         data['products'] = prodAdded;
+        const total = prodAdded.reduce((total, currValue) => total + parseFloat(currValue.total),0);
+        data['total'] = total;
 
         console.log(data);
 

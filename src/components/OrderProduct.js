@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 
 const OrderProduct = ({ product, prodAdded, setProdAdded }) => {
-    //Events
+
     const deleteHandler = () => {
-        // setTodos(todos.filter((el) => el.id !== todo.id ))
         console.log(product)
         setProdAdded(prodAdded.filter((el) => el.barcode !== product.barcode))
     }
@@ -20,16 +19,6 @@ const OrderProduct = ({ product, prodAdded, setProdAdded }) => {
             return item;
         }))
     }
-    // const completeHandler = () => {
-    //     setListProducts(listProducts.map((item) => {
-    //         if(item.id === product.id){
-    //             return{
-    //                 ...item, completed: !item.completed //leave all the properties as they are and just modify completed
-    //             };
-    //         }
-    //         return item;
-    //     }))
-    // }
 
     return (
         <>
