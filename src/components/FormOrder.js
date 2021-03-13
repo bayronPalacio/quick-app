@@ -3,6 +3,7 @@ import { Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import ListOrderProducts from "../components/ListOrderProducts";
 
 const FormOrder = ({
   handleSubmit,
@@ -110,6 +111,10 @@ const FormOrder = ({
           </Button>
         </Col>
       </Form.Row>
+      <hr className="hrStyling"></hr>
+      <div style={{ marginTop: "1%" }}>
+        <ListOrderProducts prodAdded={prodAdded} setProdAdded={setProdAdded} />
+      </div>
 
       <Button
         onClick={successMessage}
@@ -117,7 +122,7 @@ const FormOrder = ({
         type="submit"
         className="btn button-color marginBtn"
       >
-        Submit
+        Create Order
       </Button>
       <Modal show={showMessage} onHide={closeMsg} size="sm">
         <Modal.Body>
