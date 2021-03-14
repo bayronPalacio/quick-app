@@ -80,7 +80,7 @@ const Orders = () => {
               <th className="center-text ">Amount</th>
               <th className="center-text">Date</th>
               <th colSpan="2" className="center-text">
-                Action
+                Remove
               </th>
               <th colSpan="2" className="center-text">
                 Create Invoice

@@ -4,8 +4,17 @@ import axios from "axios";
 import { format } from "date-fns"; //Library to format date
 
 const OrderProduct = ({ invoice, listInvoices }) => {
+  console.log("invoice:", invoice);
   const createPdf = async () => {
-    await axios.post(`createPdf/${invoice}`);
+    axios
+      .post("/createPdf/", { payload: invoice })
+      .then(function (response) {
+        console.log(response);
+        window.open(response.data.path, "_blank");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (

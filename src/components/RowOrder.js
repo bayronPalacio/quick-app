@@ -42,14 +42,14 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
         <td>{order.data.customer}</td>
         <td className="center-text">{order.data.total}</td>
         <td className="center-text">{order.data.orderDate}</td>
-        <td className="center-text">
+        <td colSpan="2" className="center-text">
           <button className="button-icon" onClick={deleteHandler}>
             <i>
               <FaIcons.FaTrashAlt />
             </i>
           </button>
         </td>
-        <td className="center-text">
+        <td colSpan="2" className="center-text">
           <button className="button-icon" onClick={generateOrder}>
             <i>
               <FaIcons.FaTruck />
