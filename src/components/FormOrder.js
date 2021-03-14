@@ -4,12 +4,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ListOrderProducts from "../components/ListOrderProducts";
+import { format } from "date-fns";
+// import ReactHTMLDatalist from "react-html-datalist";
 
 const FormOrder = ({
   handleSubmit,
   data,
   flag,
   listProducts,
+  setListProducts,
   prodAdded,
   setProdAdded,
   orderId,
@@ -38,6 +41,7 @@ const FormOrder = ({
       quantity: 1,
       total: value[1],
     });
+    setListProducts(listProducts.filter((el) => el.barcode !== value[0]));
   };
 
   const addHandler = () => {
@@ -62,7 +66,11 @@ const FormOrder = ({
           <Form.Control
             type="date"
             name="orderDate"
-            defaultValue={data.orderDate}
+            value={
+              data.orderDate === undefined
+                ? format(new Date(), "yyyy-MM-dd")
+                : data.orderDate
+            }
           />
         </Form.Group>
       </Form.Row>
@@ -89,12 +97,26 @@ const FormOrder = ({
       </Form.Row>
       <Form.Row className="align-items-center">
         <Col xs="md" className="my-1">
+          {/* <ReactHTMLDatalist
+            name={"food_id"}
+            // onChange={handleChange}
+            classNames={"classone classtwo"}
+            options={[
+              { text: "Dove Revive Shamp", value: "1" },
+              { text: "Hamilton Beach", value: "2" },
+              { text: "Certified", value: "3" },
+              { text: "Daily Pore Refining", value: "4" },
+            ]}
+          /> */}
           <Form.Control
             as="select"
             placeholder="Select"
             className="mr-sm-2"
             onChange={optionHandler}
           >
+            <option key="090909" value="0">
+              Select product{""}
+            </option>
             {listProducts.map((product, index) => {
               return (
                 <option
