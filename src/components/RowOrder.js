@@ -2,23 +2,46 @@ import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import axios from "axios";
 import { format } from "date-fns"; //Library to format date
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 const OrderProduct = ({ order, listOrders, setListOrders }) => {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const closeMsg = () => {
+    setShowMessage(false);
+  };
+
+  const genAlert = () => {
+    setShowMessage(true);
+  };
+
   const deleteHandler = () => {
     setListOrders(listOrders.filter((el) => el._id !== order._id));
     axios
       .delete(`/deleteOrder/${order._id}`)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .then(function (response) {})
+      .catch(function (error) {});
   };
 
-  const generateOrder = async () => {
+  const generateInvoice = async () => {
+    // Update order status to COMPLETED
+    setListOrders(
+      listOrders.map((item) => {
+        if (item.data.orderId === order.data.orderId) {
+          item.data.status = "Completed";
+          return item;
+        }
+        return item;
+      })
+    );
+    updateOrder();
+
+    // Create Invoice Object to insert into DB
     const orderArray = [];
     const data = Object.fromEntries(orderArray.entries());
+    const invoiceId = await axios.get("lastInvoiceId");
+    data["invoiceId"] = invoiceId.data;
     data["order"] = order.data;
     data["company"] = {
       invoiceDate: format(new Date(), "yyyy-MM-dd"),
@@ -34,9 +57,24 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
     });
   };
 
+  const updateOrder = () => {
+    axios
+      .put("/updateOrder/", { payload: order })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <>
-      <tr>
+      <tr
+        style={{
+          backgroundColor: order.data.status === "Completed" ? "green" : "",
+        }}
+      >
         <td>{order.data.orderId}</td>
         <td>{order.data.status}</td>
         <td>{order.data.customer}</td>
@@ -50,13 +88,32 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
           </button>
         </td>
         <td colSpan="2" className="center-text">
-          <button className="button-icon" onClick={generateOrder}>
+          <button
+            className="button-icon"
+            onClick={
+              order.data.status === "Completed" ? genAlert : generateInvoice
+            }
+          >
             <i>
               <FaIcons.FaTruck />
             </i>
           </button>
         </td>
       </tr>
+      <Modal show={showMessage} onHide={closeMsg} size="sm">
+        <Modal.Body>
+          <div className="mainBackModalProduct">
+            <p>Invoice has been already created</p>
+            <Button
+              variant="primary"
+              className="btn button-color marginBtn"
+              onClick={closeMsg}
+            >
+              Ok
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
