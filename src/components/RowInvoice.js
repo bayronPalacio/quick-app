@@ -20,7 +20,7 @@ const OrderProduct = ({ invoice, listInvoices }) => {
   return (
     <>
       <tr>
-        <td>{"1"}</td>
+        <td>{invoice.data.invoiceId}</td>
         <td>{invoice.data.order.customer}</td>
         <td className="center-text">{invoice.data.order.orderDate}</td>
         <td className="center-text">{invoice.data.company.invoiceDate}</td>
