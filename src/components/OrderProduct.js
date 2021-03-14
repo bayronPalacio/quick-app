@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import * as FaIcons from "react-icons/fa";
 
 const OrderProduct = ({ product, prodAdded, setProdAdded }) => {
-  const deleteHandler = () => {
+  const deleteHandler = (e) => {
+    e.preventDefault();
     setProdAdded(prodAdded.filter((el) => el.barcode !== product.barcode));
   };
 
