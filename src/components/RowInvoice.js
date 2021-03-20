@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import * as FaIcons from "react-icons/fa";
 import axios from "axios";
-import { format } from "date-fns"; //Library to format date
 
-const OrderProduct = ({ invoice, listInvoices }) => {
-  console.log("invoice:", invoice);
-  const createPdf = async () => {
+const OrderProduct = ({ invoice }) => {
+  const createPdf = async (e) => {
+    e.preventDefault();
     axios
-      .post("/createPdf/", { payload: invoice })
+      .get("/createPdf/", { params: invoice, responseType: "blob" })
       .then(function (response) {
-        console.log(response);
-        window.open(response.data.path, "_blank");
+        const file = new Blob([response.data], { type: "application/pdf" });
+        //Build a URL from the file
+        const fileURL = URL.createObjectURL(file);
+        //Open the URL on new Window
+        window.open(fileURL);
       })
       .catch(function (error) {
         console.log(error);
@@ -26,11 +28,11 @@ const OrderProduct = ({ invoice, listInvoices }) => {
         <td className="center-text">{invoice.data.company.invoiceDate}</td>
         <td className="center-text">{invoice.data.order.total}</td>
         <td className="center-text">
-          <button className="button-icon" onClick={createPdf}>
+          <a className="button-icon" onClick={createPdf}>
             <i>
               <FaIcons.FaFilePdf />
             </i>
-          </button>
+          </a>
         </td>
       </tr>
     </>
