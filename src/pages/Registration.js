@@ -1,46 +1,38 @@
 import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Form, Col, Button } from "react-bootstrap";
 
 const Registration = () => {
-  // const { name, last, company, address, city, province, email, password } = req.body;
-
-  const [name, setName] = useState("");
-  const [last, setLast] = useState("");
-  const [company, setCompany] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [province, setProvince] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [validated, setValidated] = useState(false);
   const history = useHistory();
 
-  const AddNewUser = async () => {
-    const result = await fetch("/registration", {
-      method: "post",
-      body: JSON.stringify({
-        name,
-        last,
-        company,
-        address,
-        city,
-        province,
-        email,
-        password: name,
-        last,
-        company,
-        address,
-        city,
-        province,
-        email,
-        password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const response = await result.json();
-    console.log(response);
+  const initialData = {};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      const dataForm = new FormData(event.target);
+      const data = Object.fromEntries(dataForm.entries());
+      const result = await fetch("/registration", {
+        method: "post",
+        body: JSON.stringify({
+          data,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (result.ok) {
+        history.push("/login");
+      } else {
+        console.log("User was not added");
+      }
+    }
+    setValidated(true);
   };
 
   return (
@@ -55,153 +47,122 @@ const Registration = () => {
         <Modal.Body>
           <div className="mx-auto">
             <h1 className="h1-title">Create your account</h1>
-            <form className="p-text">
-              <div className="form-row">
-                <div className="col-md-5">
-                  <label for="validationCustom01">First name</label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    className="form-control"
-                    id="validationCustom01"
-                    placeholder="Mark"
+            <Form
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+              className="p-text"
+            >
+              <Form.Row className="formPadding">
+                <Form.Group as={Col} md="6">
+                  <Form.Label>First name</Form.Label>
+                  <Form.Control
                     required
-                  />
-                </div>
-                <div className="col-md-5">
-                  <label for="validationCustom02">Last name</label>
-                  <input
                     type="text"
-                    value={last}
-                    onChange={(event) => setLast(event.target.value)}
-                    className="form-control"
-                    id="validationCustom02"
-                    placeholder="Otto"
+                    placeholder="First Name"
+                    name="name"
+                    defaultValue={initialData.name}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md="6">
+                  <Form.Label>Last name</Form.Label>
+                  <Form.Control
                     required
-                  />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col-md-5">
-                  <label for="validationCustom03">Company Name</label>
-                  <input
                     type="text"
-                    value={company}
-                    onChange={(event) => setCompany(event.target.value)}
-                    className="form-control"
-                    id="validationCustom03"
+                    placeholder="Last Name"
+                    name="last"
+                    defaultValue={initialData.last}
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row className="formPadding">
+                <Form.Group as={Col} md="6">
+                  <Form.Label>Company Name</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
                     placeholder="Quick Inventory"
-                    required
+                    name="company"
+                    defaultValue={initialData.company}
                   />
-                </div>
-                <div className="col-md-5">
-                  <label for="validationCustom05">Address</label>
-                  <input
+                </Form.Group>
+                <Form.Group as={Col} md="6">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
+                    required
                     type="text"
-                    value={address}
-                    onChange={(event) => setAddress(event.target.value)}
-                    className="form-control"
-                    id="validationCustom05"
                     placeholder="123 Street Ave"
-                    required
+                    name="address"
+                    defaultValue={initialData.address}
                   />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col-md-5">
-                  <label for="validationCustom03">City</label>
-                  <input
+                </Form.Group>
+              </Form.Row>
+              <Form.Row className="formPadding">
+                <Form.Group as={Col} md="6">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    required
                     type="text"
-                    value={city}
-                    onChange={(event) => setCity(event.target.value)}
-                    className="form-control"
-                    id="validationCustom03"
                     placeholder="City"
-                    required
+                    name="city"
+                    defaultValue={initialData.city}
                   />
-                </div>
-                <div className="col-md-5">
-                  <label for="validationCustom05">Province/State</label>
-                  <input
+                </Form.Group>
+                <Form.Group as={Col} md="6">
+                  <Form.Label>Province/State</Form.Label>
+                  <Form.Control
+                    required
                     type="text"
-                    value={province}
-                    onChange={(event) => setProvince(event.target.value)}
-                    className="form-control"
-                    id="validationCustom05"
                     placeholder="Province/State"
-                    required
+                    name="province"
+                    defaultValue={initialData.province}
                   />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col-md-5">
-                  <label for="validationCustom03">Email</label>
-                  <input
-                    type="text"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    className="form-control"
-                    id="validationCustom03"
+                </Form.Group>
+              </Form.Row>
+              <Form.Row className="formPadding">
+                <Form.Group as={Col} md="6">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    required
+                    type="email"
                     placeholder="email@service.com"
-                    required
+                    name="email"
+                    defaultValue={initialData.email}
                   />
-                  <div className="invalid-feedback">
+                  <Form.Control.Feedback type="invalid">
                     Please provide a valid email.
-                  </div>
-                </div>
-                <div className="col-md-5">
-                  <label for="validationCustom05">Password</label>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    className="form-control"
-                    id="validationCustom05"
-                    placeholder="Password"
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} md="6">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
                     required
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    defaultValue={initialData.password}
                   />
-                  <small
-                    id="passwordHelpBlock"
-                    className="form-text text-muted"
-                  >
-                    Your password must be 8-20 characters long, contain letters
-                    and numbers.
-                  </small>
-                  <div className="invalid-feedback">
-                    Please provide a valid password
-                  </div>
-                </div>
-              </div>
-              <div className="d-flex justify-content-center">
-                <div className="form-group">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="invalidCheck"
-                      required
-                    />
-                    <label className="form-check-label" for="invalidCheck">
-                      Agree to terms and conditions
-                    </label>
-                    <div className="invalid-feedback">
-                      You must agree before submitting.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="d-flex justify-content-center">
-                <button
-                  type="submit"
-                  onClick={() => AddNewUser()}
+                </Form.Group>
+              </Form.Row>
+              <Form.Row className="formPadding">
+                <Form.Group>
+                  <Form.Check
+                    required
+                    label="Agree to terms and conditions"
+                    feedback="You must agree before submitting."
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row className="formPadding">
+                <Button
                   className="btn button-color marginBtn"
+                  type="submit"
+                  justify
                 >
                   Create an Account
-                </button>
-              </div>
-            </form>
+                </Button>
+              </Form.Row>
+            </Form>
           </div>
         </Modal.Body>
       </Modal>

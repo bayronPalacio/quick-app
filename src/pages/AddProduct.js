@@ -18,21 +18,7 @@ const AddProduct = () => {
         "Content-Type": "application/json",
       },
     });
-
-    // const response = await toDb.json();
     e.target.reset();
-    // return(
-    //     <div>
-    //         <Alert color="primary">
-    //             ngngh
-    //         </Alert>
-    //     </div>
-    // <SweetAlert
-    //     success
-    //     title="Your product has been added."
-    //     onConfirm={() => this.hideAlert()}
-    //     ></SweetAlert>
-    // )
   };
 
   return (

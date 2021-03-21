@@ -73,11 +73,19 @@ const Inventory = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
-          <MDBTableHead textWhite>
+        <MDBTable
+          responsive
+          scrollY
+          maxHeight="900px"
+          bordered
+          large
+          hover
+          dark
+        >
+          <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
-              <th>Barcode</th>
-              <th>Name</th>
+              <th className="center-text">Barcode</th>
+              <th className="center-text">Name</th>
               <th className="center-text">Quantity</th>
               <th className="center-text ">Min Stock</th>
               <th className="center-text">Price</th>

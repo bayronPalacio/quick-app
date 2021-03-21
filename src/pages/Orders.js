@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
 import Order from "../components/RowOrder";
 import axios from "axios";
 import * as FaIcons from "react-icons/fa";
@@ -77,10 +76,10 @@ const Orders = () => {
           maxHeight="900px"
           bordered
           large
-          dark
           hover
+          dark
         >
-          <MDBTableHead textWhite>
+          <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
               <th className="center-text ">Order Id</th>
               <th className="center-text ">Status</th>
