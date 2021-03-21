@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import RowInvoice from "../components/RowInvoice";
+import Cookies from "js-cookie";
 
 const Invoices = () => {
   const [listInvoices, setInvoices] = useState([]);
@@ -9,7 +10,9 @@ const Invoices = () => {
   useEffect(async () => {
     const arrayInvoices = [];
     try {
-      const response = await axios.get("/invoices");
+      const response = await axios.get("/invoices", {
+        params: Cookies.get("Company"),
+      });
       setInvoices(response.data);
       response.data.map((item) => {
         arrayInvoices.push(item.data);

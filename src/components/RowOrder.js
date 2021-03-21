@@ -4,6 +4,7 @@ import axios from "axios";
 import { format } from "date-fns"; //Library to format date
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Cookies from "js-cookie";
 
 const OrderProduct = ({ order, listOrders, setListOrders }) => {
   const [showMessage, setShowMessage] = useState(false);
@@ -16,10 +17,15 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
     setShowMessage(true);
   };
 
+  const info = JSON.stringify({
+    id: order._id,
+    company: Cookies.get("Company"),
+  });
+
   const deleteHandler = () => {
     setListOrders(listOrders.filter((el) => el._id !== order._id));
     axios
-      .delete(`/deleteOrder/${order._id}`)
+      .delete(`/deleteOrder/${info}`)
       .then(function (response) {})
       .catch(function (error) {});
   };
@@ -40,12 +46,14 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
     // Create Invoice Object to insert into DB
     const orderArray = [];
     const data = Object.fromEntries(orderArray.entries());
-    const invoiceId = await axios.get("lastInvoiceId");
+    const invoiceId = await axios.get("lastInvoiceId", {
+      params: Cookies.get("Company"),
+    });
     data["invoiceId"] = invoiceId.data;
     data["order"] = order.data;
     data["company"] = {
       invoiceDate: format(new Date(), "yyyy-MM-dd"),
-      Company: "Quick Inventory",
+      Company: Cookies.get("Company"),
     };
 
     const toDb = await fetch("/addInvoice", {
@@ -59,7 +67,7 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
 
   const updateOrder = () => {
     axios
-      .put("/updateOrder/", { payload: order })
+      .put("/updateOrder/", { payload: order, company: Cookies.get("Company") })
       .then(function (response) {
         console.log(response.data);
       })

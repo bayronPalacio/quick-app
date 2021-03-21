@@ -3,6 +3,7 @@ import * as FaIcons from "react-icons/fa";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import FormProduct from "./FormProduct";
+import Cookies from "js-cookie";
 
 const Row = ({ product, listProducts, setListProducts }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -10,8 +11,12 @@ const Row = ({ product, listProducts, setListProducts }) => {
   const deleteHandler = () => {
     setListProducts(listProducts.filter((el) => el._id !== product._id));
 
+    const info = JSON.stringify({
+      id: product._id,
+      company: Cookies.get("Company"),
+    });
     axios
-      .delete(`/deleteProduct/${product._id}`)
+      .delete(`/deleteProduct/${info}`)
       .then(function (response) {
         console.log(response.data);
       })
@@ -22,7 +27,10 @@ const Row = ({ product, listProducts, setListProducts }) => {
 
   const updateProduct = () => {
     axios
-      .put("/updateProduct/", { payload: product })
+      .put("/updateProduct/", {
+        payload: product,
+        company: Cookies.get("Company"),
+      })
       .then(function (response) {
         console.log(response.data);
       })

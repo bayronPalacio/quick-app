@@ -7,6 +7,7 @@ import { CSVLink } from "react-csv";
 import { format } from "date-fns";
 import FileUpload from "../components/FileUpload";
 import Modal from "react-bootstrap/Modal";
+import Cookies from "js-cookie";
 
 const headers = [
   { label: "Order ID", key: "orderId" },
@@ -24,7 +25,9 @@ const Orders = () => {
   useEffect(async () => {
     const arrayOrders = [];
     try {
-      const response = await axios.get("/orders");
+      const response = await axios.get("/orders", {
+        params: Cookies.get("Company"),
+      });
       setListOrders(response.data);
       response.data.map((item) => {
         arrayOrders.push(item.data);
