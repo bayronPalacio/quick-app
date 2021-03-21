@@ -27,11 +27,19 @@ const Invoices = () => {
     <>
       <div className="rightSection">
         <h1>Invoices</h1>
-        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
-          <MDBTableHead textWhite>
+        <MDBTable
+          responsive
+          scrollY
+          maxHeight="900px"
+          bordered
+          large
+          hover
+          dark
+        >
+          <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
-              <th>Invoice Id</th>
-              <th>Customer</th>
+              <th className="center-text">Invoice Id</th>
+              <th className="center-text">Customer</th>
               <th className="center-text">Order Date</th>
               <th className="center-text">Invoice Date</th>
               <th className="center-text">Amount</th>

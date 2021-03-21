@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
 import Order from "../components/RowOrder";
 import axios from "axios";
 import * as FaIcons from "react-icons/fa";
@@ -71,12 +70,20 @@ const Orders = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
-          <MDBTableHead textWhite>
+        <MDBTable
+          responsive
+          scrollY
+          maxHeight="900px"
+          bordered
+          large
+          hover
+          dark
+        >
+          <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
-              <th>Order Id</th>
-              <th>Status</th>
-              <th>Customer</th>
+              <th className="center-text ">Order Id</th>
+              <th className="center-text ">Status</th>
+              <th className="center-text ">Customer</th>
               <th className="center-text ">Amount</th>
               <th className="center-text">Date</th>
               <th colSpan="2" className="center-text">
