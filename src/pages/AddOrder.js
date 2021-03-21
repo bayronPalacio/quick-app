@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FormOrder from "../components/FormOrder";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const AddProduct = () => {
   const initialData = {};
@@ -24,7 +25,7 @@ const AddProduct = () => {
 
     const toDb = await fetch("/addOrder", {
       method: "post",
-      body: JSON.stringify({ data, company: "a" }),
+      body: JSON.stringify({ data, company: Cookies.get("Company") }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -39,7 +40,9 @@ const AddProduct = () => {
 
   useEffect(async () => {
     try {
-      const response = await axios.get("/products");
+      const response = await axios.get("/products", {
+        params: Cookies.get("Company"),
+      });
       setListProducts(response.data);
       getOrderId();
     } catch (error) {
@@ -49,7 +52,9 @@ const AddProduct = () => {
 
   const getOrderId = async () => {
     try {
-      const lastOrderId = await axios.get("/lastOrderId");
+      const lastOrderId = await axios.get("/lastOrderId", {
+        params: Cookies.get("Company"),
+      });
       setOrderId(lastOrderId.data);
     } catch (error) {
       console.log(error);
