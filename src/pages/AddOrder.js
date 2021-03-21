@@ -15,7 +15,7 @@ const AddProduct = () => {
     data["status"] = "In Progress";
     data["products"] = prodAdded;
     const total = prodAdded.reduce(
-      (total, currValue) => total + parseFloat(currValue.total),
+      (total, currValue) => parseFloat(total) + parseFloat(currValue.total),
       0
     );
     data["total"] = total.toFixed(2);
@@ -24,7 +24,7 @@ const AddProduct = () => {
 
     const toDb = await fetch("/addOrder", {
       method: "post",
-      body: JSON.stringify({ data }),
+      body: JSON.stringify({ data, company: "a" }),
       headers: {
         "Content-Type": "application/json",
       },
