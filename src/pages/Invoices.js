@@ -26,12 +26,8 @@ const Invoices = () => {
     <>
       <div className="rightSection">
         <h1>Invoices</h1>
-        <Table
-          responsive="sm"
-          style={{ backgroundColor: "#1f1f1f" }}
-          className="p-text"
-        >
-          <thead>
+        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
+          <MDBTableHead textWhite>
             <tr>
               <th>Invoice Id</th>
               <th>Customer</th>
@@ -42,8 +38,8 @@ const Invoices = () => {
                 See PDF
               </th>
             </tr>
-          </thead>
-          <tbody>
+          </MDBTableHead>
+          <MDBTableBody textWhite>
             {listInvoices.map((invoice) => (
               <RowInvoice
                 key={invoice._id}
@@ -51,8 +47,8 @@ const Invoices = () => {
                 listInvoices={listInvoices}
               />
             ))}
-          </tbody>
-        </Table>
+          </MDBTableBody>
+        </MDBTable>
       </div>
     </>
   );

@@ -70,12 +70,8 @@ const Orders = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <Table
-          responsive="sm"
-          style={{ backgroundColor: "#1f1f1f" }}
-          className="p-text"
-        >
-          <thead>
+        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
+          <MDBTableHead textWhite>
             <tr>
               <th>Order Id</th>
               <th>Status</th>
@@ -89,8 +85,8 @@ const Orders = () => {
                 Create Invoice
               </th>
             </tr>
-          </thead>
-          <tbody>
+          </MDBTableHead>
+          <MDBTableBody textWhite>
             {listOrders.map((order) => (
               <Order
                 key={order._id}
@@ -99,8 +95,8 @@ const Orders = () => {
                 setListOrders={setListOrders}
               />
             ))}
-          </tbody>
-        </Table>
+          </MDBTableBody>
+        </MDBTable>
       </div>
     </>
   );

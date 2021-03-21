@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import FileUpload from "../components/FileUpload";
 import Modal from "react-bootstrap/Modal";
 import Cookies from "js-cookie";
+import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 
 const headers = [
   { label: "Barcode", key: "barcode" },
@@ -72,17 +73,8 @@ const Inventory = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <Table
-          responsive="sm"
-          style={{
-            backgroundColor: "#1f1f1f",
-            overflowY: "scroll",
-            height: "300px",
-            display: "block",
-          }}
-          className="p-text"
-        >
-          <thead>
+        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
+          <MDBTableHead textWhite>
             <tr>
               <th>Barcode</th>
               <th>Name</th>
@@ -96,8 +88,8 @@ const Inventory = () => {
                 Alarms
               </th>
             </tr>
-          </thead>
-          <tbody>
+          </MDBTableHead>
+          <MDBTableBody textWhite>
             {listProducts.map((product) => (
               <Row
                 key={product._id}
@@ -106,8 +98,8 @@ const Inventory = () => {
                 setListProducts={setListProducts}
               />
             ))}
-          </tbody>
-        </Table>
+          </MDBTableBody>
+        </MDBTable>
       </div>
     </>
   );
