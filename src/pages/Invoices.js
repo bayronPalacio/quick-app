@@ -27,7 +27,15 @@ const Invoices = () => {
     <>
       <div className="rightSection">
         <h1>Invoices</h1>
-        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
+        <MDBTable
+          responsive
+          scrollY
+          maxHeight="900px"
+          bordered
+          large
+          dark
+          data={listInvoices}
+        >
           <MDBTableHead textWhite>
             <tr>
               <th>Invoice Id</th>

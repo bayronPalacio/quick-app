@@ -71,12 +71,20 @@ const Orders = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <MDBTable responsive scrollY maxHeight="900px" bordered large dark>
+        <MDBTable
+          responsive
+          scrollY
+          maxHeight="900px"
+          bordered
+          large
+          dark
+          hover
+        >
           <MDBTableHead textWhite>
             <tr>
-              <th>Order Id</th>
-              <th>Status</th>
-              <th>Customer</th>
+              <th className="center-text ">Order Id</th>
+              <th className="center-text ">Status</th>
+              <th className="center-text ">Customer</th>
               <th className="center-text ">Amount</th>
               <th className="center-text">Date</th>
               <th colSpan="2" className="center-text">
