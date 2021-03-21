@@ -3,6 +3,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import RowInvoice from "../components/RowInvoice";
 import Cookies from "js-cookie";
+import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 
 const Invoices = () => {
   const [listInvoices, setInvoices] = useState([]);
