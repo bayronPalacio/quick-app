@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import FileUpload from "../components/FileUpload";
 import Modal from "react-bootstrap/Modal";
 import Cookies from "js-cookie";
+import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 
 const headers = [
   { label: "Order ID", key: "orderId" },
