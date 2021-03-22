@@ -19,8 +19,8 @@ const Login = () => {
     });
     const response = await result.json();
     console.log(response);
-    if (response["responseServer"]["response"] === "yes") {
-      Cookies.set("Company", response["responseServer"]["Company"]);
+    if (response["responseServer"] !== "no") {
+      Cookies.set("Company", response["responseServer"]);
       history.push("/dashboard");
       console.log("Successfully Login");
     } else {
