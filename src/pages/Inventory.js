@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
 import Row from "../components/Row";
 import axios from "axios";
 import * as FaIcons from "react-icons/fa";
@@ -56,13 +55,11 @@ const Inventory = () => {
           <FaIcons.FaFileUpload />
           <a onClick={clickHandler}> IMPORT &nbsp;&nbsp;</a>
           <FaIcons.FaFileDownload />
-          <Modal show={openModal} onHide={closeHandler} size="lg">
+          <Modal show={openModal} onHide={closeHandler} size="md">
             <Modal.Body>
               <FileUpload />
             </Modal.Body>
           </Modal>
-          {/* <input type="file" name="file" /> */}
-          {/* <input type="button" value="EXPORT" /> */}
           <CSVLink
             data={data}
             headers={headers}
