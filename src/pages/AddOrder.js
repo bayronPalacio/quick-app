@@ -32,7 +32,6 @@ const AddProduct = () => {
     });
     console.log(toDb.response);
 
-    // const response = await toDb.json();
     e.target.reset();
     setProdAdded([]);
     getOrderId();

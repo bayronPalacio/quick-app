@@ -1,47 +1,48 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 body {
   width: 100%;
-  margin-left:auto;
-  margin-right:auto;
-  background-color: #CCCCCC;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #cccccc;
   overflow: hidden;
 }
 
-#carouseArea{
+#carouseArea {
   width: 60%;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.navbar-custom { 
+.navbar-custom {
   background-color: #1f1f1f;
-} 
+}
 
-.navbar-custom .navbar-brand, 
-.navbar-text { 
+.navbar-custom .navbar-brand,
+.navbar-text {
   color: white;
-} 
+}
 
 .nav-link {
-  color:#303841;
+  color: #303841;
 }
 
-.d-flex, .list-group-item {
-  background-color: #1F1F1F;
-  color:#EEEEEE;
+.d-flex,
+.list-group-item {
+  background-color: #1f1f1f;
+  color: #eeeeee;
 }
 
 .backgroundHome {
@@ -49,14 +50,14 @@ body {
 }
 
 .h1 {
-  background-color: #1F1F1F;
-  color : white;
+  background-color: #1f1f1f;
+  color: white;
 }
 
 .mainBackAlert {
-  background-color: #DFF1F9;
-  margin-left:auto;
-  margin-right:auto;
+  background-color: #dff1f9;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mainBackModalSignIn {
@@ -64,7 +65,7 @@ body {
   max-width: 630px;
   padding: 15px;
   margin: auto;
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 
 .mainBackModalSignUp {
@@ -72,37 +73,38 @@ body {
   max-width: 700px;
   padding: 15px;
   margin: auto;
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 
-
-.h1-title{
+.h1-title {
   text-align: center;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   color: #f8f8f8;
 }
 
-.button-color{
-  background-color: #FF6E40;
-  color:white;
+.button-color {
+  background-color: #ff6e40;
+  color: white;
 }
 
-.p-text, .dropdown-item, .text-center {
-    color : white;
+.p-text,
+.dropdown-item,
+.text-center {
+  color: white;
 }
 
 .p-title {
-    color : #03A9F5;
+  color: #03a9f5;
 }
 
 .dropdown-item:hover {
-  color:#FF6E40;
-  background-color: #1F1F1F;
+  color: #ff6e40;
+  background-color: #1f1f1f;
 }
 
-.primaryModal{
-  background-color: #1F1F1F;
+.primaryModal {
+  background-color: #1f1f1f;
 }
 
 .flex-fill {
@@ -114,18 +116,20 @@ body {
 }
 
 .col-md-5 {
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .marginBtn {
   margin-bottom: 2%;
 }
 
-.test{
+.test {
   width: 100%;
 }
 
-/* .rightSection{
-  margin-left: 30px;
-} */
+.marginProgressBar {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: "5%";
+}

@@ -97,17 +97,6 @@ const FormOrder = ({
       </Form.Row>
       <Form.Row className="align-items-center">
         <Col xs="md" className="my-1">
-          {/* <ReactHTMLDatalist
-            name={"food_id"}
-            // onChange={handleChange}
-            classNames={"classone classtwo"}
-            options={[
-              { text: "Dove Revive Shamp", value: "1" },
-              { text: "Hamilton Beach", value: "2" },
-              { text: "Certified", value: "3" },
-              { text: "Daily Pore Refining", value: "4" },
-            ]}
-          /> */}
           <Form.Control
             as="select"
             placeholder="Select"
