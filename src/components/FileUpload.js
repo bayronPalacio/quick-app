@@ -17,7 +17,7 @@ function FileUpload() {
 
   const uploadFile = () => {
     const formData = new FormData();
-    formData["company"] = Cookies.get("Company");
+    formData.append("company", Cookies.get("Company"));
     formData.append("file", file); // appending file
     axios
       .post("/upload", formData, {
