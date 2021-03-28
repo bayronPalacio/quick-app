@@ -8,6 +8,7 @@ import FileUpload from "../components/FileUpload";
 import Modal from "react-bootstrap/Modal";
 import Cookies from "js-cookie";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import { useHistory } from "react-router-dom";
 
 const headers = [
   { label: "Barcode", key: "barcode" },
@@ -23,6 +24,7 @@ const Inventory = () => {
   const [listProducts, setListProducts] = useState([]);
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const history = useHistory();
 
   useEffect(async () => {
     const arrayProd = [];
@@ -42,6 +44,7 @@ const Inventory = () => {
 
   const closeHandler = () => {
     setOpenModal(false);
+    history.push("/inventory");
   };
 
   const clickHandler = () => {
