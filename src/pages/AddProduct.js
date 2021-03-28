@@ -18,6 +18,7 @@ const AddProduct = () => {
         "Content-Type": "application/json",
       },
     });
+    console.log(toDb);
     e.target.reset();
   };
 

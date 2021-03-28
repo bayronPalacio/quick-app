@@ -30,7 +30,9 @@ const AddProduct = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log(toDb.response);
+    if (toDb.ok) {
+      console.log("order added");
+    }
 
     // const response = await toDb.json();
     e.target.reset();
