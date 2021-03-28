@@ -34,7 +34,6 @@ const AddProduct = () => {
       console.log("order added");
     }
 
-    // const response = await toDb.json();
     e.target.reset();
     setProdAdded([]);
     getOrderId();

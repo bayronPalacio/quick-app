@@ -63,6 +63,9 @@ const Registration = () => {
                     name="name"
                     defaultValue={initialData.name}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter name
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="6">
                   <Form.Label>Last name</Form.Label>
@@ -73,6 +76,9 @@ const Registration = () => {
                     name="last"
                     defaultValue={initialData.last}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter last name
+                  </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
               <Form.Row className="formPadding">
@@ -85,6 +91,9 @@ const Registration = () => {
                     name="company"
                     defaultValue={initialData.company}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter Company name
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="6">
                   <Form.Label>Address</Form.Label>
@@ -95,6 +104,9 @@ const Registration = () => {
                     name="address"
                     defaultValue={initialData.address}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter address
+                  </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
               <Form.Row className="formPadding">
@@ -107,6 +119,9 @@ const Registration = () => {
                     name="city"
                     defaultValue={initialData.city}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter city
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="6">
                   <Form.Label>Province/State</Form.Label>
@@ -117,6 +132,9 @@ const Registration = () => {
                     name="province"
                     defaultValue={initialData.province}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter province
+                  </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
               <Form.Row className="formPadding">
@@ -142,6 +160,9 @@ const Registration = () => {
                     name="password"
                     defaultValue={initialData.password}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Please enter a password
+                  </Form.Control.Feedback>
                 </Form.Group>
               </Form.Row>
               <Form.Row className="formPadding">
