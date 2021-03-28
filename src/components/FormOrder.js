@@ -110,7 +110,7 @@ const FormOrder = ({
               return (
                 <option
                   key={index}
-                  value={Array(product.data.barcode, product.data.price)}
+                  value={[product.data.barcode, product.data.price]}
                 >
                   {product.data.name}
                 </option>
