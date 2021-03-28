@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function FileUpload() {
   const [file, setFile] = useState(""); // storing the uploaded file    // storing the recived file from backend
@@ -16,6 +17,7 @@ function FileUpload() {
 
   const uploadFile = () => {
     const formData = new FormData();
+    formData["company"] = Cookies.get("Company");
     formData.append("file", file); // appending file
     axios
       .post("/upload", formData, {
