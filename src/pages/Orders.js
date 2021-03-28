@@ -13,7 +13,7 @@ const headers = [
   { label: "Order ID", key: "orderId" },
   { label: "Status", key: "status" },
   { label: "Customer", key: "customer" },
-  { label: "Amount", key: "amount" },
+  { label: "Amount", key: "total" },
   { label: "Date", key: "orderDate" },
 ];
 
