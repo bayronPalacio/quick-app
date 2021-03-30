@@ -44,7 +44,7 @@ const Inventory = () => {
 
   const closeHandler = () => {
     setOpenModal(false);
-    history.push("/inventory");
+    window.location.reload(true);
   };
 
   const clickHandler = () => {
