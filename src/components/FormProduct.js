@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import SearchAddress from "../components/SearchAddress";
 
 const FormProduct = ({ handleSubmit, data, validated }) => {
   return (
@@ -46,9 +44,7 @@ const FormProduct = ({ handleSubmit, data, validated }) => {
           </Form.Control.Feedback>
         </Form.Group>
       </Form.Row>
-      <Form.Row>
-        <SearchAddress />
-      </Form.Row>
+      <Form.Row></Form.Row>
       <Form.Row>
         <Form.Group as={Col}>
           <Form.Label>Price</Form.Label>
@@ -103,7 +99,6 @@ const FormProduct = ({ handleSubmit, data, validated }) => {
         </Form.Group>
       </Form.Row>
       <Button
-        // onClick={successMessage}
         variant="primary"
         type="submit"
         className="btn button-color marginBtn"

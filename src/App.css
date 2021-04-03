@@ -139,3 +139,50 @@ h5 {
   overflow: auto;
   background-color: #1f1f1f;
 }
+
+.graphStyle {
+  min-width: 100%;
+  margin-top: 2%;
+}
+
+.cardStyle {
+  width: 100%;
+  height: 45%;
+  background-color: #1f1f1f;
+  color: #ff6e40;
+  text-align: center;
+  font-size: 34px;
+  border-radius: 5px;
+}
+
+.marginCards {
+  margin-top: 10%;
+}
+
+.margin2Cards {
+  margin-top: 3%;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.listItem {
+  width: 50%;
+  color: white;
+  font-size: 150%;
+}
+
+.listTitle {
+  width: 50%;
+  color: #ff6e40;
+  font-size: 160%;
+}
+
+.listTitleGroup {
+  color: #ff6e40;
+  font-weight: 600;
+  font-size: medium;
+  font-size: 200%;
+}
