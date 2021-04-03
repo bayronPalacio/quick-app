@@ -1,55 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Chart from "react-google-charts";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
+  const [listProducts, setListProducts] = useState([]);
+  useEffect(async () => {
+    const arrayProducts = [];
+    try {
+      const response = await axios.get("/popularProds", {
+        params: Cookies.get("Company"),
+      });
+      arrayProducts.push(["name", "Qty"]);
+      response.data.map((item, index) => {
+        arrayProducts.push([item.values[0].name, item.values[0].count]);
+      });
+      setListProducts(arrayProducts);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className="rightSection">
       <h1>Dashboard</h1>
-      <Chart
-        width={"500px"}
-        height={"300px"}
-        chartType="Bar"
-        loader={<div>Loading Chart</div>}
-        data={[
-          ["Year", "Sales", "Expenses", "Profit"],
-          ["2014", 1000, 400, 200],
-          ["2015", 1170, 460, 250],
-          ["2016", 660, 1120, 300],
-          ["2017", 1030, 540, 350],
-        ]}
-        options={{
-          // Material design options
-          chart: {
-            title: "Company Performance",
-            subtitle: "Sales, Expenses, and Profit: 2014-2017",
-          },
-        }}
-        // For tests
-        rootProps={{ "data-testid": "2" }}
-      />
+
       <div style={{ display: "flex", maxWidth: 900 }}>
         <Chart
-          width={400}
-          height={300}
+          width={500}
+          height={400}
           chartType="ColumnChart"
           loader={<div>Loading Chart</div>}
-          data={[
-            ["City", "2010 Population", "2000 Population"],
-            ["New York City, NY", 8175000, 8008000],
-            ["Los Angeles, CA", 3792000, 3694000],
-            ["Chicago, IL", 2695000, 2896000],
-            ["Houston, TX", 2099000, 1953000],
-            ["Philadelphia, PA", 1526000, 1517000],
-          ]}
+          data={listProducts}
           options={{
-            title: "Population of Largest U.S. Cities",
-            chartArea: { width: "30%" },
+            title: "Trending Products",
+            chartArea: { width: "50%" },
             hAxis: {
-              title: "Total Population",
+              title: "Product Name",
               minValue: 0,
             },
             vAxis: {
-              title: "City",
+              title: "Qty",
             },
           }}
           legendToggle
@@ -151,3 +142,28 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+{
+  /* <Chart
+width={"500px"}
+height={"300px"}
+chartType="Bar"
+loader={<div>Loading Chart</div>}
+data={[
+  ["Name", "Products"],
+  ["2014", 1000, 400, 200],
+  ["2015", 1170, 460, 250],
+  ["2016", 660, 1120, 300],
+  ["2017", 1030, 540, 350],
+]}
+options={{
+  // Material design options
+  chart: {
+    title: "Trending Products",
+    subtitle: "Most popular products sold",
+  },
+}}
+// For tests
+rootProps={{ "data-testid": "2" }}
+/> */
+}
