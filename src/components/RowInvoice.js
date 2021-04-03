@@ -32,7 +32,7 @@ const OrderProduct = ({ invoice }) => {
             <i>
               <FaIcons.FaFilePdf />
             </i>
-          </a>
+          </a>  
         </td>
       </tr>
     </>
