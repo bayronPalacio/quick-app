@@ -4,20 +4,83 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
 import { Divide } from "react-feather";
+import { format } from "date-fns";
 
 const Dashboard = () => {
   const [listProducts, setListProducts] = useState([]);
+  const [saleByDate, setSalesByDate] = useState([]);
+  const [totalSales, setTotalSales] = useState(0);
+  const [salesToday, setSalesToday] = useState(0);
+  const [totalOrders, setTotalOrders] = useState(0);
+  const [totalInvoices, setTotalInvoices] = useState(0);
+  const [avgOrders, setAvgOrders] = useState(0);
+  const [avgInvoices, setAvgInvoices] = useState(0);
+  const [productStock, setProductsStock] = useState([]);
+
   useEffect(async () => {
     const arrayProducts = [];
+    const arrayProdStock = [];
+    const arraySales = [];
+
     try {
-      const response = await axios.get("/popularProds", {
+      let response = await axios.get("/popularProds", {
         params: Cookies.get("Company"),
       });
       arrayProducts.push(["name", "Qty"]);
-      response.data.map((item, index) => {
+      arrayProdStock.push(["name", "level", "min-stock"]);
+      response.data.map(async (item) => {
         arrayProducts.push([item.values[0].name, item.values[0].count]);
+
+        response = await axios.get("/productInfo", {
+          params: [Cookies.get("Company"), item.values[0].name],
+        });
+
+        arrayProdStock.push([
+          response.data.data.name,
+          response.data.data.quantity,
+          response.data.data.minStock,
+        ]);
       });
       setListProducts(arrayProducts);
+      setProductsStock(arrayProdStock);
+
+      response = await axios.get("/totalSales", {
+        params: Cookies.get("Company"),
+      });
+      setTotalSales(response.data[0].total);
+
+      response = await axios.get("/salesByDate", {
+        params: Cookies.get("Company"),
+      });
+      arraySales.push(["Date", "Sales"]);
+      response.data.map((item) => {
+        arraySales.push([item._id, item.total]);
+      });
+      setSalesByDate(arraySales);
+
+      arraySales[arraySales.length - 1][0] === format(new Date(), "yyyy-MM-dd")
+        ? setSalesToday(arraySales[arraySales.length - 1][1])
+        : setSalesToday(0);
+
+      response = await axios.get("/totalOrders", {
+        params: Cookies.get("Company"),
+      });
+      setTotalOrders(response.data.totalOrders);
+
+      response = await axios.get("/totalInvoices", {
+        params: Cookies.get("Company"),
+      });
+      setTotalInvoices(response.data.totalInvoices);
+
+      response = await axios.get("/avgOrders", {
+        params: Cookies.get("Company"),
+      });
+      setAvgOrders(response.data[0].avg.toFixed(2));
+
+      response = await axios.get("/avgInvoices", {
+        params: Cookies.get("Company"),
+      });
+      setAvgInvoices(response.data[0].avg.toFixed(2));
     } catch (error) {
       console.log(error);
     }
@@ -66,19 +129,13 @@ const Dashboard = () => {
               height={400}
               chartType="AreaChart"
               loader={<div>Loading Chart</div>}
-              data={[
-                ["Year", "Sales"],
-                ["2013", 1000],
-                ["2014", 1170],
-                ["2015", 660],
-                ["2016", 1030],
-              ]}
+              data={saleByDate}
               options={{
                 title: "Company Performance",
                 colors: ["ff6e40"],
                 backgroundColor: "#1f1f1f",
                 hAxis: {
-                  title: "Year",
+                  title: "Date",
                   textStyle: {
                     color: "white",
                   },
@@ -105,14 +162,14 @@ const Dashboard = () => {
               <Card.Body>
                 <Card.Title>TODAY'S SALES</Card.Title>
                 <Card.Text>CAD</Card.Text>
-                <Card.Text>$2342.34</Card.Text>
+                <Card.Text>${salesToday}</Card.Text>
               </Card.Body>
             </Card>
             <Card className="cardStyle marginCards">
               <Card.Body>
                 <Card.Title>TOTAL SALES</Card.Title>
                 <Card.Text>CAD</Card.Text>
-                <Card.Text>$2342.34</Card.Text>
+                <Card.Text>${totalSales}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
@@ -123,14 +180,7 @@ const Dashboard = () => {
               height={400}
               chartType="BarChart"
               loader={<div>Loading Chart</div>}
-              data={[
-                ["Year", "Level", "Min. Stock"],
-                ["2014", 1000, 400],
-                ["2015", 1170, 460],
-                ["2016", 660, 1120],
-                ["2017", 1030, 540],
-                ["2018", 200, 300],
-              ]}
+              data={productStock}
               options={{
                 title: "5 TOP STOCK LEVEL PRODUCTS",
                 chartArea: { width: "60%", height: "70%" },
@@ -174,9 +224,11 @@ const Dashboard = () => {
                 </ListGroup.Item>
               </ListGroup>
               <ListGroup horizontal>
-                <ListGroup.Item className="listItem">89</ListGroup.Item>
                 <ListGroup.Item className="listItem">
-                  CAD $4345.2
+                  {totalOrders}
+                </ListGroup.Item>
+                <ListGroup.Item className="listItem">
+                  CAD ${avgOrders}
                 </ListGroup.Item>
               </ListGroup>
               <ListGroup.Item className="listTitleGroup">
@@ -184,16 +236,18 @@ const Dashboard = () => {
               </ListGroup.Item>
               <ListGroup horizontal>
                 <ListGroup.Item className="listTitle">
-                  Total Orders
+                  Total Invoices
                 </ListGroup.Item>
                 <ListGroup.Item className="listTitle">
                   Avg. Total
                 </ListGroup.Item>
               </ListGroup>
               <ListGroup horizontal>
-                <ListGroup.Item className="listItem">89</ListGroup.Item>
                 <ListGroup.Item className="listItem">
-                  CAD $4345.2
+                  {totalInvoices}
+                </ListGroup.Item>
+                <ListGroup.Item className="listItem">
+                  CAD ${avgInvoices}
                 </ListGroup.Item>
               </ListGroup>
             </ListGroup>
