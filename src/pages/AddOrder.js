@@ -27,8 +27,6 @@ const AddProduct = () => {
       );
       data["total"] = total.toFixed(2);
 
-      console.log(data);
-
       const toDb = await fetch("/addOrder", {
         method: "post",
         body: JSON.stringify({ data, company: Cookies.get("Company") }),
