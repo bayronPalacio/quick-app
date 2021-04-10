@@ -92,70 +92,78 @@ const Dashboard = () => {
       <Container className="graphStyle">
         <Row>
           <Col sm={6}>
-            <Chart
-              height={400}
-              chartType="BarChart"
-              loader={<div>Loading Chart</div>}
-              data={listProducts}
-              options={{
-                title: "5 TOP SELLING PRODUCTS",
-                chartArea: { width: "60%", height: "70%" },
-                colors: ["ff6e40"],
-                backgroundColor: "#1f1f1f",
-                hAxis: {
-                  title: "Qty",
-                  minValue: 0,
-                  textStyle: {
+            {listProducts.length > 1 ? (
+              <Chart
+                height={400}
+                chartType="BarChart"
+                loader={<div>Loading Chart</div>}
+                data={listProducts}
+                options={{
+                  title: "5 TOP SELLING PRODUCTS",
+                  chartArea: { width: "60%", height: "70%" },
+                  colors: ["ff6e40"],
+                  backgroundColor: "#1f1f1f",
+                  hAxis: {
+                    title: "Qty",
+                    minValue: 0,
+                    textStyle: {
+                      color: "white",
+                    },
+                    titleTextStyle: { color: "white" },
+                  },
+                  vAxis: {
+                    title: "Product Name",
+                    textStyle: {
+                      color: "white",
+                    },
+                    titleTextStyle: { color: "white" },
+                  },
+                  titleTextStyle: {
                     color: "white",
                   },
-                  titleTextStyle: { color: "white" },
-                },
-                vAxis: {
-                  title: "Product Name",
-                  textStyle: {
-                    color: "white",
-                  },
-                  titleTextStyle: { color: "white" },
-                },
-                titleTextStyle: {
-                  color: "white",
-                },
-                legend: "none",
-              }}
-            />
+                  legend: "none",
+                }}
+              />
+            ) : (
+              <h1>There is not data to show</h1>
+            )}
           </Col>
           <Col sm={4}>
-            <Chart
-              height={400}
-              chartType="AreaChart"
-              loader={<div>Loading Chart</div>}
-              data={saleByDate}
-              options={{
-                title: "Company Performance",
-                colors: ["ff6e40"],
-                backgroundColor: "#1f1f1f",
-                hAxis: {
-                  title: "Date",
-                  textStyle: {
+            {saleByDate > 0 ? (
+              <Chart
+                height={400}
+                chartType="AreaChart"
+                loader={<div>Loading Chart</div>}
+                data={saleByDate}
+                options={{
+                  title: "Company Performance",
+                  colors: ["ff6e40"],
+                  backgroundColor: "#1f1f1f",
+                  hAxis: {
+                    title: "Date",
+                    textStyle: {
+                      color: "white",
+                    },
+                    titleTextStyle: { color: "white" },
+                  },
+                  vAxis: {
+                    title: "CAD",
+                    minValue: 0,
+                    textStyle: {
+                      color: "white",
+                    },
+                    titleTextStyle: { color: "white" },
+                  },
+                  chartArea: { width: "80%", height: "70%" },
+                  titleTextStyle: {
                     color: "white",
                   },
-                  titleTextStyle: { color: "white" },
-                },
-                vAxis: {
-                  title: "CAD",
-                  minValue: 0,
-                  textStyle: {
-                    color: "white",
-                  },
-                  titleTextStyle: { color: "white" },
-                },
-                chartArea: { width: "80%", height: "70%" },
-                titleTextStyle: {
-                  color: "white",
-                },
-                legend: "none",
-              }}
-            />
+                  legend: "none",
+                }}
+              />
+            ) : (
+              <h1>There is not data to show</h1>
+            )}
           </Col>
           <Col sm={2}>
             <Card className="cardStyle">
@@ -176,41 +184,45 @@ const Dashboard = () => {
         </Row>
         <Row>
           <Col sm={6}>
-            <Chart
-              height={400}
-              chartType="BarChart"
-              loader={<div>Loading Chart</div>}
-              data={productStock}
-              options={{
-                title: "5 TOP STOCK LEVEL PRODUCTS",
-                chartArea: { width: "60%", height: "70%" },
-                colors: ["green", "red"],
-                backgroundColor: "#1f1f1f",
-                hAxis: {
-                  title: "Qty",
-                  minValue: 0,
-                  textStyle: {
+            {productStock > 1 ? (
+              <Chart
+                height={400}
+                chartType="BarChart"
+                loader={<div>Loading Chart</div>}
+                data={productStock}
+                options={{
+                  title: "5 TOP STOCK LEVEL PRODUCTS",
+                  chartArea: { width: "60%", height: "70%" },
+                  colors: ["green", "red"],
+                  backgroundColor: "#1f1f1f",
+                  hAxis: {
+                    title: "Qty",
+                    minValue: 0,
+                    textStyle: {
+                      color: "white",
+                    },
+                    titleTextStyle: { color: "white" },
+                  },
+                  vAxis: {
+                    title: "Product Name",
+                    textStyle: {
+                      color: "white",
+                    },
+                    titleTextStyle: { color: "white" },
+                  },
+                  titleTextStyle: {
                     color: "white",
                   },
-                  titleTextStyle: { color: "white" },
-                },
-                vAxis: {
-                  title: "Product Name",
-                  textStyle: {
-                    color: "white",
+                  legend: {
+                    textStyle: {
+                      color: "white",
+                    },
                   },
-                  titleTextStyle: { color: "white" },
-                },
-                titleTextStyle: {
-                  color: "white",
-                },
-                legend: {
-                  textStyle: {
-                    color: "white",
-                  },
-                },
-              }}
-            />
+                }}
+              />
+            ) : (
+              <h1>There is not data to show</h1>
+            )}
           </Col>
           <Col sm={6}>
             <ListGroup className="list" variant="flush">
