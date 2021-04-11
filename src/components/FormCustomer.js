@@ -65,11 +65,10 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
         <Form.Group as={Col} md="6">
           <Form.Label>City</Form.Label>
           <Form.Control
-            disabled
             type="text"
             placeholder="City"
             name="city"
-            defaultValue={city}
+            value={city}
           />
           <Form.Control.Feedback type="invalid">
             Please enter city
@@ -78,11 +77,10 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
         <Form.Group as={Col} md="6">
           <Form.Label>Province/State</Form.Label>
           <Form.Control
-            disabled
             type="text"
             placeholder="Province/State"
             name="province"
-            defaultValue={province}
+            value={province}
           />
           <Form.Control.Feedback type="invalid">
             Please enter province
