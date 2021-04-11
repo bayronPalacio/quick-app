@@ -4,11 +4,11 @@ const RowCustomer = ({ customer }) => {
   return (
     <>
       <tr>
-        <td>{customer.Company}</td>
-        <td>{customer.Name + " " + customer.Last}</td>
-        <td>{customer.Address}</td>
-        <td>{customer.City}</td>
-        <td>{customer.Province}</td>
+        <td>{customer.data.company}</td>
+        <td>{customer.data.name + " " + customer.data.last}</td>
+        <td>{customer.data.address}</td>
+        <td>{customer.data.city}</td>
+        <td>{customer.data.province}</td>
       </tr>
     </>
   );

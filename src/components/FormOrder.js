@@ -12,13 +12,20 @@ const FormOrder = ({
   data,
   listProducts,
   setListProducts,
+  listCustomers,
   prodAdded,
   setProdAdded,
   orderId,
+  setCustomer,
 }) => {
   const [option, setOption] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
+
+  const customerHandler = (e) => {
+    let index = e.nativeEvent.target.selectedIndex;
+    setCustomer(listCustomers[index].data);
+  };
 
   const optionHandler = (e) => {
     let index = e.nativeEvent.target.selectedIndex;
@@ -79,11 +86,28 @@ const FormOrder = ({
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Customer</Form.Label>
-            <Form.Control
+            {/* <Form.Control
               type="text"
               name="customer"
               defaultValue={data.customer}
-            />
+            /> */}
+            <Form.Control
+              as="select"
+              placeholder={data.customer}
+              className="mr-sm-2"
+              onChange={customerHandler}
+            >
+              <option key="090909" value="0">
+                {data.customer}
+              </option>
+              {listCustomers.map((customer, index) => {
+                return (
+                  <option key={index} value={customer.data}>
+                    {customer.data.company}
+                  </option>
+                );
+              })}
+            </Form.Control>
           </Form.Group>
         </Form.Row>
         <Form.Row>

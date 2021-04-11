@@ -12,6 +12,7 @@ import Orders from "./pages/Orders";
 import AddOrder from "./pages/AddOrder";
 import Invoices from "./pages/Invoices";
 import Customers from "./pages/Customers";
+import AddCustomer from "./pages/AddCustomer";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/addOrder" component={AddOrder} />
           <Route path="/invoices" component={Invoices} />
           <Route path="/customers" component={Customers} />
+          <Route path="/addCustomer" component={AddCustomer} />
         </div>
       </Switch>
     </Router>

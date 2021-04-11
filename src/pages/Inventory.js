@@ -8,7 +8,6 @@ import FileUpload from "../components/FileUpload";
 import Modal from "react-bootstrap/Modal";
 import Cookies from "js-cookie";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
-import { useHistory } from "react-router-dom";
 
 const headers = [
   { label: "Barcode", key: "barcode" },
@@ -24,7 +23,6 @@ const Inventory = () => {
   const [listProducts, setListProducts] = useState([]);
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const history = useHistory();
 
   useEffect(async () => {
     const arrayProd = [];
@@ -33,7 +31,7 @@ const Inventory = () => {
         params: Cookies.get("Company"),
       });
       setListProducts(response.data);
-      response.data.map((item) => {
+      response.data.forEach((item) => {
         arrayProd.push(item.data);
       });
       setData(arrayProd);
@@ -73,15 +71,7 @@ const Inventory = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <MDBTable
-          responsive
-          scrollY
-          maxHeight="900px"
-          bordered
-          large
-          hover
-          dark
-        >
+        <MDBTable responsive scrollY maxHeight="85vh" bordered large hover dark>
           <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
               <th className="center-text">Barcode</th>

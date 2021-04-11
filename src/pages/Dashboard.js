@@ -3,7 +3,6 @@ import Chart from "react-google-charts";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
-import { Divide } from "react-feather";
 import { format } from "date-fns";
 
 const Dashboard = () => {
@@ -52,7 +51,7 @@ const Dashboard = () => {
         params: Cookies.get("Company"),
       });
       arraySales.push(["Date", "Sales"]);
-      response.data.map((item) => {
+      response.data.forEach((item) => {
         arraySales.push([item._id, item.total]);
       });
       setSalesByDate(arraySales);

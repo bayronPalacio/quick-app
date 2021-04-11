@@ -30,7 +30,7 @@ const AddProduct = () => {
       const data = Object.fromEntries(dataForm.entries());
       data["alarm"] = false;
 
-      const toDb = await fetch("/addProduct", {
+      await fetch("/addProduct", {
         method: "post",
         body: JSON.stringify({ data, company: Cookies.get("Company") }),
         headers: {

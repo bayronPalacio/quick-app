@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -103,7 +103,7 @@ const FormProduct = ({ handleSubmit, data, validated }) => {
         type="submit"
         className="btn button-color marginBtn"
       >
-        Submit
+        Create Product
       </Button>
     </Form>
   );
