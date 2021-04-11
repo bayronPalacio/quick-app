@@ -30,6 +30,7 @@ const Customers = () => {
               <th className="center-text">Address</th>
               <th className="center-text">City</th>
               <th className="center-text">Province</th>
+              <th className="center-text">Country</th>
             </tr>
           </MDBTableHead>
           <MDBTableBody textWhite>

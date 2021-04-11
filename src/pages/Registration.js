@@ -1,4 +1,3 @@
-import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Col, Button } from "react-bootstrap";
@@ -7,6 +6,9 @@ import SearchAddress from "../components/SearchAddress";
 const Registration = () => {
   const [validated, setValidated] = useState(false);
   const [inputAddress, setInputAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+  const [country, setCountry] = useState("");
   const history = useHistory();
 
   const initialData = {};
@@ -93,18 +95,22 @@ const Registration = () => {
             </Form.Group>
             <Form.Group as={Col} md="6">
               <Form.Label>Address</Form.Label>
-              <SearchAddress setInputAddress={setInputAddress} />
+              <SearchAddress
+                setInputAddress={setInputAddress}
+                setCity={setCity}
+                setProvince={setProvince}
+                setCountry={setCountry}
+              />
             </Form.Group>
           </Form.Row>
           <Form.Row className="formPadding">
             <Form.Group as={Col} md="6">
               <Form.Label>City</Form.Label>
               <Form.Control
-                required
                 type="text"
                 placeholder="City"
                 name="city"
-                defaultValue={initialData.city}
+                value={city}
               />
               <Form.Control.Feedback type="invalid">
                 Please enter city
@@ -113,11 +119,10 @@ const Registration = () => {
             <Form.Group as={Col} md="6">
               <Form.Label>Province/State</Form.Label>
               <Form.Control
-                required
                 type="text"
                 placeholder="Province/State"
                 name="province"
-                defaultValue={initialData.province}
+                value={province}
               />
               <Form.Control.Feedback type="invalid">
                 Please enter province

@@ -92,7 +92,7 @@ const Dashboard = () => {
           <Col sm={6}>
             {listProducts.length > 1 ? (
               <Chart
-                height={400}
+                height="45vh"
                 chartType="BarChart"
                 loader={<div>Loading Chart</div>}
                 data={listProducts}
@@ -129,7 +129,7 @@ const Dashboard = () => {
           <Col sm={4}>
             {saleByDate.length > 1 ? (
               <Chart
-                height={400}
+                height="45vh"
                 chartType="AreaChart"
                 loader={<div>Loading Chart</div>}
                 data={saleByDate}
@@ -166,14 +166,14 @@ const Dashboard = () => {
           <Col sm={2}>
             <Card className="cardStyle">
               <Card.Body>
-                <Card.Title>TODAY'S SALES</Card.Title>
+                <Card.Text>TODAY'S SALES</Card.Text>
                 <Card.Text>CAD</Card.Text>
                 <Card.Text>${salesToday}</Card.Text>
               </Card.Body>
             </Card>
             <Card className="cardStyle marginCards">
               <Card.Body>
-                <Card.Title>TOTAL SALES</Card.Title>
+                <Card.Text>TOTAL SALES</Card.Text>
                 <Card.Text>CAD</Card.Text>
                 <Card.Text>${totalSales}</Card.Text>
               </Card.Body>
@@ -184,7 +184,7 @@ const Dashboard = () => {
           <Col sm={6}>
             {productStock.length > 1 ? (
               <Chart
-                height={400}
+                height="45vh"
                 chartType="BarChart"
                 loader={<div>Loading Chart</div>}
                 data={productStock}
