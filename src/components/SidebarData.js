@@ -1,16 +1,16 @@
-import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as RiIcons from 'react-icons/ri';
+import React from "react";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
   {
-    title: 'Dashboard',
-    path: '/dashboard',
+    title: "Dashboard",
+    path: "/dashboard",
     icon: <AiIcons.AiFillTablet />,
   },
   {
-    title: 'Inventory',
+    title: "Inventory",
     // path: '/inventory',
     icon: <FaIcons.FaBoxes />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -18,21 +18,21 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'List Products',
-        path: '/inventory',
+        title: "List Products",
+        path: "/inventory",
         icon: <FaIcons.FaBoxOpen />,
-        cName: 'sub-nav'
+        cName: "sub-nav",
       },
       {
-        title: 'Add',
-        path: '/addProduct',
+        title: "Add",
+        path: "/addProduct",
         icon: <FaIcons.FaPlus />,
-        cName: 'sub-nav'
+        cName: "sub-nav",
       },
-    ]
+    ],
   },
   {
-    title: 'Orders',
+    title: "Orders",
     // path: '/orders',
     icon: <FaIcons.FaPrint />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -40,37 +40,32 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'List Orders',
-        path: '/orders',
+        title: "List Orders",
+        path: "/orders",
         icon: <FaIcons.FaBoxOpen />,
-        cName: 'sub-nav'
+        cName: "sub-nav",
       },
       {
-        title: 'Add',
-        path: '/addOrder',
+        title: "Add",
+        path: "/addOrder",
         icon: <FaIcons.FaPlus />,
-        cName: 'sub-nav'
+        cName: "sub-nav",
       },
-    ]
+    ],
   },
   {
-    title: 'Invoices',
-    path: '/invoices',
-    icon: <FaIcons.FaFolder />
+    title: "Invoices",
+    path: "/invoices",
+    icon: <FaIcons.FaFolder />,
   },
   {
-    title: 'Set Alarms',
-    path: '/messages',
-    icon: <FaIcons.FaBell />,
+    title: "Customers",
+    path: "/customers",
+    icon: <FaIcons.FaIndustry />,
   },
   {
-    title: 'Suppliers',
-    path: '/suppliers',
-    icon: <FaIcons.FaIndustry />
+    title: "Sign out",
+    path: "/",
+    icon: <FaIcons.FaPowerOff />,
   },
-  {
-    title: 'Sign out',
-    path: '/',
-    icon: <FaIcons.FaPowerOff />
-  }
 ];
