@@ -24,7 +24,7 @@ const FormOrder = ({
 
   const customerHandler = (e) => {
     let index = e.nativeEvent.target.selectedIndex;
-    setCustomer(listCustomers[index].data);
+    setCustomer(listCustomers[index - 1].data);
   };
 
   const optionHandler = (e) => {
