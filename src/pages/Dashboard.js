@@ -34,11 +34,10 @@ const Dashboard = () => {
         response = await axios.get("/productInfo", {
           params: [Cookies.get("Company"), item.values[0].name],
         });
-
         arrayProdStock.push([
-          response.data.data.name,
-          response.data.data.quantity,
-          response.data.data.minStock,
+          response.data[0].name,
+          response.data[0].quantity,
+          response.data[0].minStock,
         ]);
       });
       setListProducts(arrayProducts);
@@ -59,7 +58,7 @@ const Dashboard = () => {
       setSalesByDate(arraySales);
 
       arraySales[arraySales.length - 1][0] === format(new Date(), "yyyy-MM-dd")
-        ? setSalesToday(arraySales[arraySales.length - 1][1])
+        ? setSalesToday(arraySales[arraySales.length - 1][1].toFixed(2))
         : setSalesToday(0);
 
       response = await axios.get("/totalOrders", {
@@ -129,7 +128,7 @@ const Dashboard = () => {
             )}
           </Col>
           <Col sm={4}>
-            {saleByDate > 0 ? (
+            {saleByDate.length > 1 ? (
               <Chart
                 height={400}
                 chartType="AreaChart"
@@ -184,7 +183,7 @@ const Dashboard = () => {
         </Row>
         <Row>
           <Col sm={6}>
-            {productStock > 1 ? (
+            {productStock.length > 1 ? (
               <Chart
                 height={400}
                 chartType="BarChart"

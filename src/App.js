@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar";
 import Orders from "./pages/Orders";
 import AddOrder from "./pages/AddOrder";
 import Invoices from "./pages/Invoices";
+import Customers from "./pages/Customers";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/orders" component={Orders} />
           <Route path="/addOrder" component={AddOrder} />
           <Route path="/invoices" component={Invoices} />
+          <Route path="/customers" component={Customers} />
         </div>
       </Switch>
     </Router>
