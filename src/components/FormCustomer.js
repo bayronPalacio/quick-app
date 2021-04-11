@@ -5,11 +5,14 @@ import Button from "react-bootstrap/Button";
 import SearchAddress from "../components/SearchAddress";
 
 const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Row>
         <Form.Group as={Col} md="6">
-          <Form.Label>First name</Form.Label>
+          <Form.Label>Contact Information</Form.Label>
           <Form.Control
             required
             type="text"
@@ -22,7 +25,7 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group as={Col} md="6">
-          <Form.Label>Last name</Form.Label>
+          <Form.Label> &nbsp;</Form.Label>
           <Form.Control
             required
             type="text"
@@ -51,18 +54,22 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
         </Form.Group>
         <Form.Group as={Col} md="6">
           <Form.Label>Address</Form.Label>
-          <SearchAddress setInputAddress={setInputAddress} />
+          <SearchAddress
+            setInputAddress={setInputAddress}
+            setCity={setCity}
+            setProvince={setProvince}
+          />
         </Form.Group>
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} md="6">
           <Form.Label>City</Form.Label>
           <Form.Control
-            required
+            disabled
             type="text"
             placeholder="City"
             name="city"
-            defaultValue={data.city}
+            defaultValue={city}
           />
           <Form.Control.Feedback type="invalid">
             Please enter city
@@ -71,11 +78,11 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
         <Form.Group as={Col} md="6">
           <Form.Label>Province/State</Form.Label>
           <Form.Control
-            required
+            disabled
             type="text"
             placeholder="Province/State"
             name="province"
-            defaultValue={data.province}
+            defaultValue={province}
           />
           <Form.Control.Feedback type="invalid">
             Please enter province
