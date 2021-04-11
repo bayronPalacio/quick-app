@@ -7,6 +7,7 @@ import SearchAddress from "../components/SearchAddress";
 const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
+  const [country, setCountry] = useState("");
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -58,11 +59,12 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
             setInputAddress={setInputAddress}
             setCity={setCity}
             setProvince={setProvince}
+            setCountry={setCountry}
           />
         </Form.Group>
       </Form.Row>
       <Form.Row>
-        <Form.Group as={Col} md="6">
+        <Form.Group as={Col} md="4">
           <Form.Label>City</Form.Label>
           <Form.Control
             type="text"
@@ -74,7 +76,7 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
             Please enter city
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="6">
+        <Form.Group as={Col} md="4">
           <Form.Label>Province/State</Form.Label>
           <Form.Control
             type="text"
@@ -84,6 +86,18 @@ const FormCustomer = ({ handleSubmit, data, validated, setInputAddress }) => {
           />
           <Form.Control.Feedback type="invalid">
             Please enter province
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="4">
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Country"
+            name="country"
+            value={country}
+          />
+          <Form.Control.Feedback type="invalid">
+            Please enter country
           </Form.Control.Feedback>
         </Form.Group>
       </Form.Row>

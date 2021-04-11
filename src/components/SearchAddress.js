@@ -19,7 +19,12 @@ Component to autofill address using GoogleAPI
 
 const libraries = ["places"];
 
-const SearchAddress = ({ setInputAddress, setCity, setProvince }) => {
+const SearchAddress = ({
+  setInputAddress,
+  setCity,
+  setProvince,
+  setCountry,
+}) => {
   const [resultAddress, setResultAddress] = useState("");
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -35,11 +40,12 @@ const SearchAddress = ({ setInputAddress, setCity, setProvince }) => {
       setResultAddress={setResultAddress}
       setCity={setCity}
       setProvince={setProvince}
+      setCountry={setCountry}
     />
   );
 };
 
-function Search({ setResultAddress, setCity, setProvince }) {
+function Search({ setResultAddress, setCity, setProvince, setCountry }) {
   const {
     ready,
     value,
@@ -64,6 +70,7 @@ function Search({ setResultAddress, setCity, setProvince }) {
     setResultAddress(addressArray[0]);
     setCity(addressArray[1]);
     setProvince(addressArray[2]);
+    setCountry(addressArray[3]);
     clearSuggestions();
   };
 
@@ -87,7 +94,7 @@ function Search({ setResultAddress, setCity, setProvince }) {
               <ComboboxOption
                 key={id}
                 value={description}
-                optionsAddres={description}
+                // optionsAddress={description}
               />
             ))}
         </ComboboxList>
