@@ -60,8 +60,25 @@ export const SidebarData = [
   },
   {
     title: "Customers",
-    path: "/customers",
-    icon: <FaIcons.FaIndustry />,
+    // path: '/orders',
+    icon: <FaIcons.FaPeopleCarry />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: "List Customers",
+        path: "/customers",
+        icon: <FaIcons.FaBoxOpen />,
+        cName: "sub-nav",
+      },
+      {
+        title: "Add",
+        path: "/addCustomer",
+        icon: <FaIcons.FaPlus />,
+        cName: "sub-nav",
+      },
+    ],
   },
   {
     title: "Sign out",

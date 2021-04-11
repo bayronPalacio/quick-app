@@ -14,7 +14,7 @@ const Invoices = () => {
         params: Cookies.get("Company"),
       });
       setInvoices(response.data);
-      response.data.map((item) => {
+      response.data.forEach((item) => {
         arrayInvoices.push(item.data);
       });
     } catch (error) {
@@ -26,15 +26,7 @@ const Invoices = () => {
     <>
       <div className="rightSection">
         <h1>Invoices</h1>
-        <MDBTable
-          responsive
-          scrollY
-          maxHeight="900px"
-          bordered
-          large
-          hover
-          dark
-        >
+        <MDBTable responsive scrollY maxHeight="90vh" bordered large hover dark>
           <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
               <th className="center-text">Invoice Id</th>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import RowCustomer from "../components/RowCustomer";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 
@@ -8,9 +9,10 @@ const Customers = () => {
 
   useEffect(async () => {
     try {
-      const response = await axios.get("/customers");
+      const response = await axios.get("/customers", {
+        params: Cookies.get("Company"),
+      });
       setCustomers(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -20,15 +22,7 @@ const Customers = () => {
     <>
       <div className="rightSection">
         <h1>Customers</h1>
-        <MDBTable
-          responsive
-          scrollY
-          maxHeight="900px"
-          bordered
-          large
-          hover
-          dark
-        >
+        <MDBTable responsive scrollY maxHeight="90vh" bordered large hover dark>
           <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
               <th className="center-text">Company Name</th>
@@ -40,7 +34,7 @@ const Customers = () => {
           </MDBTableHead>
           <MDBTableBody textWhite>
             {listCustomers.map((customer) => (
-              <RowCustomer customer={customer} />
+              <RowCustomer key={customer._id} customer={customer} />
             ))}
           </MDBTableBody>
         </MDBTable>

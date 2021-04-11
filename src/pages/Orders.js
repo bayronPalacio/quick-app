@@ -12,7 +12,7 @@ import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 const headers = [
   { label: "Order ID", key: "orderId" },
   { label: "Status", key: "status" },
-  { label: "Customer", key: "customer" },
+  { label: "Customer", key: "customer.company" },
   { label: "Amount", key: "total" },
   { label: "Date", key: "orderDate" },
 ];
@@ -60,15 +60,7 @@ const Orders = () => {
             EXPORT
           </CSVLink>
         </h5>
-        <MDBTable
-          responsive
-          scrollY
-          maxHeight="900px"
-          bordered
-          large
-          hover
-          dark
-        >
+        <MDBTable responsive scrollY maxHeight="85vh" bordered large hover dark>
           <MDBTableHead textWhite style={{ backgroundColor: "black" }}>
             <tr>
               <th className="center-text ">Order Id</th>

@@ -23,7 +23,7 @@ const OrderProduct = ({ invoice }) => {
     <>
       <tr>
         <td>{invoice.data.invoiceId}</td>
-        <td>{invoice.data.order.customer}</td>
+        <td>{invoice.data.order.customer.company}</td>
         <td className="center-text">{invoice.data.order.orderDate}</td>
         <td className="center-text">{invoice.data.company.invoiceDate}</td>
         <td className="center-text">{invoice.data.order.total}</td>
@@ -32,7 +32,7 @@ const OrderProduct = ({ invoice }) => {
             <i>
               <FaIcons.FaFilePdf />
             </i>
-          </a>  
+          </a>
         </td>
       </tr>
     </>

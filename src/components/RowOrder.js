@@ -56,7 +56,7 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
       Company: Cookies.get("Company"),
     };
 
-    const toDb = await fetch("/addInvoice", {
+    await fetch("/addInvoice", {
       method: "post",
       body: JSON.stringify({ data }),
       headers: {
@@ -85,7 +85,7 @@ const OrderProduct = ({ order, listOrders, setListOrders }) => {
       >
         <td>{order.data.orderId}</td>
         <td>{order.data.status}</td>
-        <td>{order.data.customer}</td>
+        <td>{order.data.customer.company}</td>
         <td className="center-text">{order.data.total}</td>
         <td className="center-text">{order.data.orderDate}</td>
         <td colSpan="2" className="center-text">
